@@ -1,475 +1,431 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ArthSpark Live Interactive Demo</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>ArthSpark Live Demo</title>
   <style>
-    .demo-topbar {
-      background: rgba(18, 14, 31, 0.95);
-      border-bottom: 1px solid var(--border-glow);
+    :root {
+      --bg-canvas: #0b0e14;
+      --bg-card: #151b26;
+      --bg-panel: #0e121a;
+      --border-soft: rgba(255, 255, 255, 0.1);
+      --border-gold: rgba(230, 190, 122, 0.42);
+      --text-main: #f3f5f8;
+      --text-muted: #9aa4b5;
+      --gold: #e6be7a;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #0b0e14 !important;
+      background-image: radial-gradient(circle at 75% 15%, rgba(56, 120, 175, 0.15), transparent 42%);
+      color: #f3f5f8 !important;
+      line-height: 1.55;
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    .topbar {
+      background: rgba(11, 14, 20, 0.94);
+      border-bottom: 1px solid var(--border-soft);
       padding: 12px 0;
       position: sticky;
       top: 0;
       z-index: 90;
     }
-    .demo-shell {
+
+    .shell {
       max-width: 1120px;
-      margin: 24px auto 60px;
-      padding: 0 16px;
+      margin: 22px auto 60px;
+      padding: 0 18px;
     }
-    .demo-stage {
+
+    .stage {
       background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-gold);
       border-radius: var(--radius-lg);
       padding: 20px;
     }
-    .demo-items-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 14px;
-      margin-top: 16px;
+
+    .heading {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
     }
-    .demo-item-card {
-      background: #0d0a18;
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
+
+    .sub {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .btn-demo {
+      background: #2b313c;
+      color: #e8ecf2 !important;
+    }
+
+    .btn-emerald {
+      background: linear-gradient(135deg, #0f5c49 0%, #178267 100%);
+      color: #ffffff !important;
+    }
+
+    .btn-indigo {
+      background: linear-gradient(135deg, #32408c 0%, #4859b8 100%);
+      color: #ffffff !important;
+    }
+
+    .btn-wa {
+      background: #178256;
+      color: #ffffff !important;
+    }
+
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+      gap: 14px;
+    }
+
+    .item-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
       padding: 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .demo-item-card h4 {
+
+    .item-card h4 {
       font-size: 0.98rem;
+      color: #ffffff;
       margin-bottom: 4px;
     }
-    .demo-item-card p {
+
+    .item-card p {
       font-size: 0.8rem;
-      color: var(--text-secondary);
+      color: var(--text-muted);
       margin-bottom: 10px;
     }
-    .cart-panel {
-      margin-top: 22px;
-      background: #0c0917;
-      border: 1px solid var(--border-glow);
-      border-radius: 14px;
+
+    .price-txt {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .panel {
+      margin-top: 20px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
       padding: 16px;
     }
-    .loan-cat-grid {
+
+    .loan-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
       gap: 10px;
-      margin: 14px 0 18px;
+      margin-bottom: 16px;
     }
-    .loan-type-btn {
-      padding: 11px;
-      border-radius: 12px;
-      background: #0d0a18;
-      border: 1px solid var(--border-subtle);
-      color: #fff;
-      font-weight: 600;
+
+    .loan-btn {
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-soft);
+      color: #f3f5f8;
       font-size: 0.84rem;
+      font-weight: 600;
       cursor: pointer;
       text-align: left;
     }
-    .loan-type-btn.active {
-      border-color: var(--accent-orange);
-      background: rgba(255, 94, 43, 0.14);
+
+    .loan-btn.active {
+      border-color: var(--border-gold);
+      color: var(--gold);
+      background: #1c2434;
     }
-    .seat-grid {
+
+    .seat-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 8px;
-      max-width: 280px;
-      margin: 14px 0;
+      max-width: 260px;
+      margin: 12px 0;
     }
+
     .seat-btn {
-      padding: 9px;
+      padding: 8px;
       border-radius: 8px;
-      background: #0d0a18;
-      border: 1px solid var(--border-subtle);
-      color: #fff;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-soft);
+      color: #f3f5f8;
       cursor: pointer;
       font-size: 0.8rem;
     }
+
     .seat-btn.picked {
-      background: var(--gradient-brand);
+      background: #178267;
+      color: #ffffff;
       border-color: transparent;
       font-weight: 700;
     }
   </style>
 </head>
 <body>
-  <div class="demo-topbar">
+  <div class="topbar">
     <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
       <div style="display:flex; align-items:center; gap:10px;">
-        <a href="index.html" class="btn btn-outline">&larr; Back to Store</a>
+        <a href="index.html" class="btn btn-demo">&larr; Back</a>
         <div>
-          <div style="font-size:0.72rem; color:#ffb48f; font-weight:700;">LIVE INTERACTIVE FRONTEND DEMO</div>
-          <strong id="demoHeaderTitle" style="font-size:1rem;">ArthSpark Demo</strong>
+          <div style="font-size:0.7rem; color:var(--gold); font-weight:700;">LIVE DEMO</div>
+          <strong id="demoTitle" style="font-size:0.98rem; color:#ffffff;">ArthSpark Demo</strong>
         </div>
       </div>
-      <div style="display:flex; gap:8px;">
-        <button id="demoEnquireWa" class="btn btn-whatsapp" type="button">Order This Project on WhatsApp</button>
-      </div>
+      <button id="demoWaBtn" class="btn btn-wa" type="button">Enquire on WhatsApp</button>
     </div>
   </div>
 
-  <main class="demo-shell">
-    <div id="demoStage" class="demo-stage"></div>
+  <main class="shell">
+    <div id="stage" class="stage"></div>
   </main>
 
   <script src="config.js"></script>
   <script>
     (function () {
-      const params = new URLSearchParams(window.location.search);
-      const type = (params.get("type") || "ecommerce").toLowerCase();
-      const title = params.get("title") || "ArthSpark Live Demo";
-      const price = params.get("price") || "7999";
+      const q = new URLSearchParams(window.location.search);
+      const type = (q.get("type") || "ecommerce").toLowerCase();
+      const title = q.get("title") || "ArthSpark Demo";
+      const price = q.get("price") || "7999";
       const cfg = window.ARTHSPARK_CONFIG || {};
-      const waNum = String(cfg.WHATSAPP_NUMBER || "917978895193").replace(/\D/g, "");
+      const wa = String(cfg.WHATSAPP_NUMBER || "917978895193").replace(/\D/g, "");
 
-      document.getElementById("demoHeaderTitle").textContent = title;
-
-      function openWa(text) {
-        window.open(`https://wa.me/${waNum}?text=${encodeURIComponent(text)}`, "_blank");
-      }
-
-      document.getElementById("demoEnquireWa").addEventListener("click", () => {
-        openWa(`Hello ArthSpark, I tested the live demo of "${title}" (Price: ₹${price}). Please share setup details!`);
+      document.getElementById("demoTitle").textContent = title;
+      document.getElementById("demoWaBtn").addEventListener("click", () => {
+        window.open(`https://wa.me/${wa}?text=${encodeURIComponent(`Hello ArthSpark, I checked "${title}" demo (₹${price}).`)}`, "_blank");
       });
 
-      const stage = document.getElementById("demoStage");
+      const stage = document.getElementById("stage");
 
-      // 1. Commerce / Grocery / Milk / Veg & Fruits / Restaurant Store Demo
-      const STORE_CATALOGS = {
+      const CATALOGS = {
         ecommerce: {
-          heading: "ArthSpark Storefront — Live Shopping & Order Flow",
-          sub: "Browse products, add to cart, click Buy Now, enter delivery address, and place a live test order.",
+          h: "E-Commerce Storefront Demo",
+          s: "Add items to cart or click Buy Now to test checkout.",
           items: [
-            { name: "Wireless Smart Watch Pro", desc: "AMOLED Display • Bluetooth Calling", price: 2499 },
-            { name: "Noise Cancelling Earbuds", desc: "40H Battery • Fast Charge", price: 1499 },
-            { name: "Urban Laptop Backpack", desc: "Waterproof • 15.6-inch Sleeve", price: 1199 },
-            { name: "Mechanical Gaming Keyboard", desc: "RGB Backlit • Tactile Keys", price: 2199 }
+            { name: "Smart Watch Pro", desc: "AMOLED Display • Calling", price: 2499 },
+            { name: "Wireless Earbuds", desc: "Fast Charge • Clear Audio", price: 1499 },
+            { name: "Travel Laptop Bag", desc: "Water Resistant • 15.6-inch", price: 1199 },
+            { name: "Mechanical Keyboard", desc: "Compact • Tactile Keys", price: 2199 }
           ]
         },
         grocery: {
-          heading: "ArthSpark Instant Grocery — 15-Min Store Demo",
-          sub: "Select daily grocery essentials, add to basket, and complete instant checkout.",
+          h: "Instant Grocery Store Demo",
+          s: "Pick daily essentials and test order placement.",
           items: [
-            { name: "Premium Basmati Rice (5 kg)", desc: "Aged Long Grain • Farm Fresh", price: 480 },
-            { name: "Cold-Pressed Mustard Oil (1 L)", desc: "100% Pure Kachi Ghani", price: 185 },
-            { name: "Whole Wheat Chakki Atta (10 kg)", desc: "High Fiber • Soft Rotis", price: 420 },
-            { name: "Toor Dal & Spices Combo", desc: "Unpolished Dal + Masala Pack", price: 290 }
+            { name: "Basmati Rice (5 kg)", desc: "Aged Long Grain", price: 480 },
+            { name: "Mustard Oil (1 L)", desc: "Pure Kachi Ghani", price: 185 },
+            { name: "Chakki Atta (10 kg)", desc: "Whole Wheat Flour", price: 420 },
+            { name: "Toor Dal & Spices", desc: "Daily Kitchen Pack", price: 290 }
           ]
         },
         milk: {
-          heading: "ArthSpark Fresh Milk — Daily Morning Subscription Demo",
-          sub: "Choose milk pack & morning delivery slot to test subscription ordering.",
+          h: "Daily Milk Subscription Demo",
+          s: "Choose milk pack and test daily delivery order.",
           items: [
-            { name: "Farm Fresh Full Cream Milk (1 L)", desc: "Morning 6:00 AM Delivery", price: 68 },
-            { name: "A2 Desi Cow Milk (1 L)", desc: "Pure Glass Bottle Pack", price: 85 },
-            { name: "Fresh Paneer & Curd Pack", desc: "200g Paneer + 400g Dahi", price: 135 },
-            { name: "7-Day Morning Milk Pass", desc: "1L Daily • Pause Anytime", price: 460 }
+            { name: "Full Cream Milk (1 L)", desc: "Morning 6:00 AM Slot", price: 68 },
+            { name: "Desi Cow Milk (1 L)", desc: "Farm Fresh Pack", price: 85 },
+            { name: "Paneer & Curd Combo", desc: "Fresh Dairy Pack", price: 135 },
+            { name: "7-Day Milk Pass", desc: "1L Daily Schedule", price: 460 }
           ]
         },
         veg_fruits: {
-          heading: "ArthSpark Sabzi & Fresh Fruits Mandi — Live Demo",
-          sub: "Pick farm-fresh vegetables & seasonal fruits and place a test basket order.",
+          h: "Vegetables & Fresh Fruits Demo",
+          s: "Select produce packs and test checkout.",
           items: [
-            { name: "Daily Sabzi Family Basket (4 kg)", desc: "Potato, Onion, Tomato, Green Veg", price: 220 },
-            { name: "Shimla Royal Apples (1 kg)", desc: "Crisp & Sweet Handpicked", price: 160 },
-            { name: "Seasonal Fruit Gift Box", desc: "Mango, Pomegranate, Banana, Kiwi", price: 340 },
-            { name: "Organic Leafy Greens Pack", desc: "Spinach, Coriander, Methi", price: 75 }
+            { name: "Daily Sabzi Basket (4 kg)", desc: "Potato, Onion, Tomato, Veg", price: 220 },
+            { name: "Royal Apples (1 kg)", desc: "Fresh Orchard Pack", price: 160 },
+            { name: "Mixed Fruit Box", desc: "Seasonal Assortment", price: 340 },
+            { name: "Leafy Greens Pack", desc: "Fresh Daily Greens", price: 75 }
           ]
         },
         restaurant: {
-          heading: "ArthSpark Restaurant & Digital Menu — Live Ordering Demo",
-          sub: "Tap dishes to add to your table/delivery order and send to kitchen.",
+          h: "Restaurant & Table Menu Demo",
+          s: "Add dishes and test order confirmation.",
           items: [
-            { name: "Paneer Tikka Masala + 2 Butter Naan", desc: "Chef Special Combo", price: 260 },
-            { name: "Hyderabadi Dum Biryani", desc: "Served with Raita & Salan", price: 240 },
-            { name: "Farmhouse Cheese Burst Pizza", desc: "Medium 10-inch • Fresh Crust", price: 320 },
-            { name: "Cold Coffee & Brownie", desc: "Chilled Classic Dessert Combo", price: 180 }
+            { name: "Paneer Tikka + Naan", desc: "Chef Special Meal", price: 260 },
+            { name: "Dum Biryani", desc: "Served with Raita", price: 240 },
+            { name: "Cheese Burst Pizza", desc: "10-inch Fresh Crust", price: 320 },
+            { name: "Cold Coffee & Brownie", desc: "Dessert Combo", price: 180 }
           ]
         }
       };
 
-      if (STORE_CATALOGS[type]) {
-        const data = STORE_CATALOGS[type];
+      if (CATALOGS[type]) {
+        const d = CATALOGS[type];
         let cart = [];
-
-        function renderStoreDemo() {
-          const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+        function drawStore() {
+          const total = cart.reduce((s, x) => s + x.price * x.qty, 0);
           stage.innerHTML = `
-            <h2 class="section-heading">${data.heading}</h2>
-            <p class="section-sub">${data.sub}</p>
-            <div class="demo-items-grid">
-              ${data.items
-                .map(
-                  (it, idx) => `
-                  <div class="demo-item-card">
-                    <div>
-                      <h4>${it.name}</h4>
-                      <p>${it.desc}</p>
+            <h2 class="heading">${d.h}</h2>
+            <p class="sub">${d.s}</p>
+            <div class="items-grid">
+              ${d.items.map((it, i) => `
+                <div class="item-card">
+                  <div>
+                    <h4>${it.name}</h4>
+                    <p>${it.desc}</p>
+                  </div>
+                  <div>
+                    <div class="price-txt">₹${it.price}</div>
+                    <div style="display:flex; gap:8px;">
+                      <button type="button" class="btn btn-demo add-b" data-i="${i}" style="flex:1;">+ Cart</button>
+                      <button type="button" class="btn btn-emerald buy-b" data-i="${i}" style="flex:1;">Buy Now</button>
                     </div>
-                    <div>
-                      <div style="font-weight:800; color:var(--accent-gold); margin-bottom:8px;">₹${it.price}</div>
-                      <div style="display:flex; gap:6px;">
-                        <button class="btn btn-outline add-cart-btn" data-idx="${idx}" type="button" style="flex:1;">+ Cart</button>
-                        <button class="btn btn-primary buy-item-btn" data-idx="${idx}" type="button" style="flex:1;">Buy Now</button>
-                      </div>
-                    </div>
-                  </div>`
-                )
-                .join("")}
+                  </div>
+                </div>`).join("")}
             </div>
-
-            <div class="cart-panel" id="checkoutSection">
-              <h3 style="font-size:1.05rem; margin-bottom:8px;">Live Cart &amp; Checkout (${cart.reduce((s, i) => s + i.qty, 0)} items)</h3>
-              ${
-                cart.length
-                  ? `<div style="margin-bottom:12px;">
-                      ${cart
-                        .map(
-                          (c, i) =>
-                            `<div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border-subtle); font-size:0.86rem;">
-                              <span>${c.name} x ${c.qty}</span>
-                              <span>₹${c.price * c.qty} <button data-rem="${i}" class="rem-btn" style="margin-left:8px; color:#ff7b7b; background:none; border:none; cursor:pointer;">Remove</button></span>
-                            </div>`
-                        )
-                        .join("")}
-                      <div style="margin-top:10px; font-weight:800; color:var(--accent-gold);">Total Payable: ₹${total}</div>
-                    </div>`
-                  : `<p style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:12px;">Cart is empty. Click "+ Cart" or "Buy Now" on any product above.</p>`
-              }
-
-              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:10px; margin-bottom:12px;">
-                <input id="demoCustName" type="text" placeholder="Customer Name" style="padding:10px; border-radius:8px; background:#120e1f; border:1px solid var(--border-subtle); color:#fff;" />
-                <input id="demoCustAddr" type="text" placeholder="Delivery Address / City" style="padding:10px; border-radius:8px; background:#120e1f; border:1px solid var(--border-subtle); color:#fff;" />
+            <div class="panel" id="cartBox">
+              <strong style="color:#ffffff;">Cart (${cart.reduce((s, x) => s + x.qty, 0)} items)</strong>
+              <div style="margin:10px 0; font-size:0.86rem;">
+                ${cart.length
+                  ? cart.map((c, idx) => `<div style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid var(--border-soft);"><span>${c.name} x ${c.qty}</span><span>₹${c.price * c.qty} <button type="button" data-d="${idx}" class="rm-b" style="margin-left:8px; background:none; border:none; color:#f87171; cursor:pointer;">Remove</button></span></div>`).join("") +
+                    `<div style="margin-top:10px; color:var(--gold); font-weight:700;">Total: ₹${total}</div>`
+                  : `<span style="color:var(--text-muted);">No items in cart yet.</span>`}
               </div>
-              <button id="placeDemoOrderBtn" class="btn btn-primary" type="button">Place Test Order Now</button>
-              <div id="demoOrderReceipt" style="margin-top:12px;"></div>
-            </div>
-          `;
-
-          stage.querySelectorAll(".add-cart-btn").forEach((b) => {
-            b.addEventListener("click", () => {
-              const item = data.items[Number(b.getAttribute("data-idx"))];
-              const existing = cart.find((c) => c.name === item.name);
-              if (existing) existing.qty += 1;
-              else cart.push({ ...item, qty: 1 });
-              renderStoreDemo();
-            });
-          });
-
-          stage.querySelectorAll(".buy-item-btn").forEach((b) => {
-            b.addEventListener("click", () => {
-              const item = data.items[Number(b.getAttribute("data-idx"))];
-              cart = [{ ...item, qty: 1 }];
-              renderStoreDemo();
-              document.getElementById("checkoutSection").scrollIntoView({ behavior: "smooth" });
-            });
-          });
-
-          stage.querySelectorAll(".rem-btn").forEach((b) => {
-            b.addEventListener("click", () => {
-              cart.splice(Number(b.getAttribute("data-rem")), 1);
-              renderStoreDemo();
-            });
-          });
-
-          document.getElementById("placeDemoOrderBtn").addEventListener("click", () => {
-            if (!cart.length) {
-              alert("Please select at least 1 product first!");
-              return;
-            }
-            const cname = document.getElementById("demoCustName").value || "Demo Customer";
-            const caddr = document.getElementById("demoCustAddr").value || "Ranchi, Jharkhand";
-            const orderId = "AS-" + Math.floor(100000 + Math.random() * 900000);
-            document.getElementById("demoOrderReceipt").innerHTML = `
-              <div style="background:rgba(30,190,93,0.14); border:1px solid #1ebe5d; padding:12px; border-radius:10px; font-size:0.86rem;">
-                <strong>Order Confirmed! (${orderId})</strong><br/>
-                Customer: ${cname} • Address: ${caddr} • Total: ₹${total}<br/>
-                <em>This is how your customers will place orders on your ArthSpark website!</em>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; margin-bottom:10px;">
+                <input id="cName" type="text" placeholder="Your Name" style="padding:9px 11px; border-radius:8px; background:#151b26; border:1px solid var(--border-soft); color:#fff;" />
+                <input id="cCity" type="text" placeholder="Delivery Address" style="padding:9px 11px; border-radius:8px; background:#151b26; border:1px solid var(--border-soft); color:#fff;" />
               </div>
-            `;
+              <button id="placeOrd" type="button" class="btn btn-emerald">Place Test Order</button>
+              <div id="ordMsg" style="margin-top:10px;"></div>
+            </div>`;
+
+          stage.querySelectorAll(".add-b").forEach((b) => b.addEventListener("click", () => {
+            const item = d.items[Number(b.getAttribute("data-i"))];
+            const found = cart.find((x) => x.name === item.name);
+            if (found) found.qty += 1; else cart.push({ ...item, qty: 1 });
+            drawStore();
+          }));
+          stage.querySelectorAll(".buy-b").forEach((b) => b.addEventListener("click", () => {
+            cart = [{ ...d.items[Number(b.getAttribute("data-i"))], qty: 1 }];
+            drawStore();
+            document.getElementById("cartBox").scrollIntoView({ behavior: "smooth" });
+          }));
+          stage.querySelectorAll(".rm-b").forEach((b) => b.addEventListener("click", () => {
+            cart.splice(Number(b.getAttribute("data-d")), 1);
+            drawStore();
+          }));
+          document.getElementById("placeOrd").addEventListener("click", () => {
+            if (!cart.length) { alert("Add an item first."); return; }
+            const nm = document.getElementById("cName").value || "Customer";
+            const ct = document.getElementById("cCity").value || "Ranchi";
+            document.getElementById("ordMsg").innerHTML = `<div style="padding:10px; border-radius:8px; background:rgba(23,130,86,0.18); border:1px solid #178256; font-size:0.85rem;">Order placed for <strong>${nm}</strong> (${ct}) • Total: <strong>₹${total}</strong></div>`;
           });
         }
-        renderStoreDemo();
+        drawStore();
         return;
       }
 
-      // 2. Loan Hub Interactive Demo (Personal, Business, Mortgage, Car New/Old, Bike New/Old)
       if (type === "loan") {
-        const LOAN_TYPES = [
-          "Personal Loan",
-          "Business Loan",
-          "Mortgage Loan",
-          "New Car Loan",
-          "Old Car Loan",
-          "New Bike Loan",
-          "Old Bike Loan"
-        ];
-        let activeLoan = LOAN_TYPES[0];
-
-        function renderLoanDemo() {
+        const types = ["Personal Loan", "Business Loan", "Mortgage Loan", "New Car Loan", "Old Car Loan", "New Bike Loan", "Old Bike Loan"];
+        let active = types[0];
+        function drawLoan() {
           stage.innerHTML = `
-            <h2 class="section-heading">ArthSpark Loan Hub — All Loan Categories Demo</h2>
-            <p class="section-sub">Select any loan category below, calculate EMI, and test instant loan application flow:</p>
-
-            <div class="loan-cat-grid">
-              ${LOAN_TYPES.map(
-                (lt) =>
-                  `<button class="loan-type-btn ${lt === activeLoan ? "active" : ""}" data-lt="${lt}" type="button">${lt}</button>`
-              ).join("")}
+            <h2 class="heading">Loan Hub Demo</h2>
+            <p class="sub">Select loan category, check EMI, and test application flow.</p>
+            <div class="loan-grid">
+              ${types.map((t) => `<button type="button" class="loan-btn ${t === active ? "active" : ""}" data-t="${t}">${t}</button>`).join("")}
             </div>
-
-            <div class="cart-panel">
-              <h3 style="margin-bottom:10px;">Apply for: <span style="color:var(--accent-gold);">${activeLoan}</span></h3>
-              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:10px; margin-bottom:12px;">
-                <div>
-                  <label style="font-size:0.78rem; color:var(--text-secondary);">Loan Amount (₹)</label>
-                  <input id="loanAmt" type="number" value="250000" style="width:100%; padding:10px; border-radius:8px; background:#120e1f; border:1px solid var(--border-subtle); color:#fff;" />
-                </div>
-                <div>
-                  <label style="font-size:0.78rem; color:var(--text-secondary);">Tenure (Months)</label>
-                  <input id="loanMonths" type="number" value="36" style="width:100%; padding:10px; border-radius:8px; background:#120e1f; border:1px solid var(--border-subtle); color:#fff;" />
-                </div>
-                <div>
-                  <label style="font-size:0.78rem; color:var(--text-secondary);">Applicant Name</label>
-                  <input id="loanApplicant" type="text" placeholder="Full Name" style="width:100%; padding:10px; border-radius:8px; background:#120e1f; border:1px solid var(--border-subtle); color:#fff;" />
-                </div>
+            <div class="panel">
+              <div style="margin-bottom:10px; font-weight:700; color:var(--gold);">${active}</div>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(175px, 1fr)); gap:10px; margin-bottom:12px;">
+                <input id="lAmt" type="number" value="200000" placeholder="Amount (₹)" style="padding:9px 11px; border-radius:8px; background:#151b26; border:1px solid var(--border-soft); color:#fff;" />
+                <input id="lTen" type="number" value="24" placeholder="Months" style="padding:9px 11px; border-radius:8px; background:#151b26; border:1px solid var(--border-soft); color:#fff;" />
+                <input id="lName" type="text" placeholder="Applicant Name" style="padding:9px 11px; border-radius:8px; background:#151b26; border:1px solid var(--border-soft); color:#fff;" />
               </div>
               <div style="display:flex; flex-wrap:wrap; gap:10px;">
-                <button id="calcEmiBtn" class="btn btn-outline" type="button">Calculate EMI</button>
-                <button id="submitLoanDemoBtn" class="btn btn-primary" type="button">Submit ${activeLoan} Request</button>
+                <button id="emiBtn" type="button" class="btn btn-demo">Calculate EMI</button>
+                <button id="appBtn" type="button" class="btn btn-indigo">Submit Request</button>
               </div>
-              <div id="loanDemoOut" style="margin-top:12px;"></div>
-            </div>
-          `;
-
-          stage.querySelectorAll(".loan-type-btn").forEach((b) => {
-            b.addEventListener("click", () => {
-              activeLoan = b.getAttribute("data-lt");
-              renderLoanDemo();
-            });
-          });
-
-          document.getElementById("calcEmiBtn").addEventListener("click", () => {
-            const p = Number(document.getElementById("loanAmt").value) || 100000;
-            const n = Number(document.getElementById("loanMonths").value) || 24;
+              <div id="lRes" style="margin-top:10px;"></div>
+            </div>`;
+          stage.querySelectorAll(".loan-btn").forEach((b) => b.addEventListener("click", () => {
+            active = b.getAttribute("data-t");
+            drawLoan();
+          }));
+          document.getElementById("emiBtn").addEventListener("click", () => {
+            const p = Number(document.getElementById("lAmt").value) || 100000;
+            const n = Number(document.getElementById("lTen").value) || 24;
             const r = 11.5 / 12 / 100;
             const emi = Math.round((p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1));
-            document.getElementById("loanDemoOut").innerHTML = `<p style="color:var(--accent-gold); font-weight:700;">Estimated Monthly EMI for ${activeLoan}: ₹${emi.toLocaleString("en-IN")}/month</p>`;
+            document.getElementById("lRes").innerHTML = `<span style="color:var(--gold); font-weight:700;">Estimated EMI for ${active}: ₹${emi.toLocaleString("en-IN")}/month</span>`;
           });
-
-          document.getElementById("submitLoanDemoBtn").addEventListener("click", () => {
-            const name = document.getElementById("loanApplicant").value || "Applicant";
-            const amt = document.getElementById("loanAmt").value || "250000";
-            document.getElementById("loanDemoOut").innerHTML = `
-              <div style="background:rgba(30,190,93,0.14); border:1px solid #1ebe5d; padding:12px; border-radius:10px; font-size:0.86rem;">
-                <strong>Application Logged!</strong> ${name}'s request for <strong>${activeLoan}</strong> (₹${Number(amt).toLocaleString("en-IN")}) is ready for instant WhatsApp/CRM routing.
-              </div>
-            `;
+          document.getElementById("appBtn").addEventListener("click", () => {
+            const nm = document.getElementById("lName").value || "Applicant";
+            document.getElementById("lRes").innerHTML = `<div style="padding:10px; border-radius:8px; background:rgba(23,130,86,0.18); border:1px solid #178256; font-size:0.85rem;">Request submitted for <strong>${nm}</strong> — <strong>${active}</strong>.</div>`;
           });
         }
-        renderLoanDemo();
+        drawLoan();
         return;
       }
 
-      // 3. Travel / Hotel / Bus / Flight / Ride (Rapido/Ola/Uber) Interactive Demo
-      if (["hotel", "bus", "flight", "ride", "tour"].includes(type)) {
-        let pickedSeats = ["S2"];
-        stage.innerHTML = `
-          <h2 class="section-heading">${title} — Interactive Booking Demo</h2>
-          <p class="section-sub">Test route/destination selection, ride/seat picker, and instant fare confirmation.</p>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:10px; margin:14px 0;">
-            <input id="fromCity" type="text" value="Ranchi" placeholder="From / Pickup" style="padding:10px; border-radius:8px; background:#0d0a18; border:1px solid var(--border-subtle); color:#fff;" />
-            <input id="toCity" type="text" value="Patna" placeholder="To / Destination" style="padding:10px; border-radius:8px; background:#0d0a18; border:1px solid var(--border-subtle); color:#fff;" />
-            <select id="rideClass" style="padding:10px; border-radius:8px; background:#0d0a18; border:1px solid var(--border-subtle); color:#fff;">
-              <option value="499">Bike / Standard Saver — ₹499</option>
-              <option value="899">AC Sleeper / Sedan Cab — ₹899</option>
-              <option value="2499">Deluxe Suite / Express Flight — ₹2,499</option>
-            </select>
-          </div>
-          ${
-            type === "bus" || type === "flight"
-              ? `<div><strong style="font-size:0.85rem;">Tap to Select Seats:</strong>
-                  <div class="seat-grid" id="seatGrid">
-                    ${["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"]
-                      .map((s) => `<button type="button" class="seat-btn ${pickedSeats.includes(s) ? "picked" : ""}" data-s="${s}">${s}</button>`)
-                      .join("")}
-                  </div>
-                </div>`
-              : ""
-          }
-          <button id="confirmTravelBtn" class="btn btn-primary" type="button">Confirm Live Booking Demo</button>
-          <div id="travelOut" style="margin-top:14px;"></div>
-        `;
-
-        stage.querySelectorAll(".seat-btn").forEach((sb) => {
-          sb.addEventListener("click", () => {
-            const s = sb.getAttribute("data-s");
-            if (pickedSeats.includes(s)) pickedSeats = pickedSeats.filter((x) => x !== s);
-            else pickedSeats.push(s);
-            sb.classList.toggle("picked");
-          });
-        });
-
-        document.getElementById("confirmTravelBtn").addEventListener("click", () => {
-          const from = document.getElementById("fromCity").value;
-          const to = document.getElementById("toCity").value;
-          const fare = document.getElementById("rideClass").value;
-          document.getElementById("travelOut").innerHTML = `
-            <div style="background:rgba(30,190,93,0.14); border:1px solid #1ebe5d; padding:12px; border-radius:10px; font-size:0.86rem;">
-              <strong>Booking Confirmed!</strong> ${from} &rarr; ${to} | Fare: ₹${fare} ${type === "bus" || type === "flight" ? "| Seats: " + pickedSeats.join(", ") : ""}
-            </div>
-          `;
-        });
-        return;
-      }
-
-      // 4. Banking / Payment Gateway / School / Real Estate / Partners / IT & Marketing Demo
+      let seats = ["S1"];
       stage.innerHTML = `
-        <h2 class="section-heading">${title} — Interactive System Preview</h2>
-        <p class="section-sub">Explore live interactive modules built for this solution by ArthSpark.</p>
-        <div class="demo-items-grid">
-          <div class="demo-item-card">
-            <h4>Customer / User Frontend</h4>
-            <p>Clean mobile-first interface with instant search, filters, and one-tap actions.</p>
-            <span class="maint-tag">Active Module</span>
-          </div>
-          <div class="demo-item-card">
-            <h4>Live Checkout &amp; WhatsApp Routing</h4>
-            <p>Direct payment gateway trigger + pre-filled WhatsApp lead alert for every user.</p>
-            <span class="maint-tag">Active Module</span>
-          </div>
-          <div class="demo-item-card">
-            <h4>Admin Control &amp; Analytics</h4>
-            <p>Manage rates, banners, entries, and customer requests directly from mobile or laptop.</p>
-            <span class="maint-tag">Active Module</span>
-          </div>
+        <h2 class="heading">${title}</h2>
+        <p class="sub">Interactive module preview &amp; live action test.</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; margin-bottom:12px;">
+          <input id="f1" type="text" value="Ranchi" style="padding:9px 11px; border-radius:8px; background:#0e121a; border:1px solid var(--border-soft); color:#fff;" />
+          <input id="f2" type="text" value="Patna" style="padding:9px 11px; border-radius:8px; background:#0e121a; border:1px solid var(--border-soft); color:#fff;" />
+          <select id="f3" style="padding:9px 11px; border-radius:8px; background:#0e121a; border:1px solid var(--border-soft); color:#fff;">
+            <option value="499">Standard Plan — ₹499</option>
+            <option value="999">Business Plan — ₹999</option>
+            <option value="2499">Enterprise Plan — ₹2,499</option>
+          </select>
         </div>
-        <div class="cart-panel">
-          <h3 style="font-size:1rem; margin-bottom:8px;">Test Instant Inquiry / Action</h3>
-          <div style="display:flex; flex-wrap:wrap; gap:10px;">
-            <input id="genDemoInput" type="text" placeholder="Enter sample name / ID / query..." style="flex:1; min-width:200px; padding:10px; border-radius:8px; background:#120e1f; border:1px solid var(--border-subtle); color:#fff;" />
-            <button id="genDemoBtn" class="btn btn-primary" type="button">Run Action</button>
-          </div>
-          <div id="genDemoResult" style="margin-top:10px;"></div>
-        </div>
+        ${["bus", "flight"].includes(type) ? `<div class="seat-row">${["S1","S2","S3","S4","S5","S6","S7","S8"].map((s) => `<button type="button" class="seat-btn ${seats.includes(s) ? "picked" : ""}" data-s="${s}">${s}</button>`).join("")}</div>` : ""}
+        <button id="runDemoAct" type="button" class="btn btn-emerald">Confirm Demo Action</button>
+        <div id="demoActOut" style="margin-top:12px;"></div>
       `;
-
-      document.getElementById("genDemoBtn").addEventListener("click", () => {
-        const val = document.getElementById("genDemoInput").value || "Sample Entry #101";
-        document.getElementById("genDemoResult").innerHTML = `
-          <div style="background:rgba(30,190,93,0.14); border:1px solid #1ebe5d; padding:10px; border-radius:10px; font-size:0.85rem;">
-            <strong>Processed Successfully:</strong> "${val}" recorded in ${title} workflow!
-          </div>
-        `;
+      stage.querySelectorAll(".seat-btn").forEach((b) => b.addEventListener("click", () => {
+        const s = b.getAttribute("data-s");
+        seats = seats.includes(s) ? seats.filter((x) => x !== s) : [...seats, s];
+        b.classList.toggle("picked");
+      }));
+      document.getElementById("runDemoAct").addEventListener("click", () => {
+        document.getElementById("demoActOut").innerHTML = `<div style="padding:10px; border-radius:8px; background:rgba(23,130,86,0.18); border:1px solid #178256; font-size:0.85rem;">Action completed: <strong>${document.getElementById("f1").value}</strong> to <strong>${document.getElementById("f2").value}</strong> (₹${document.getElementById("f3").value}).</div>`;
       });
     })();
   </script>
