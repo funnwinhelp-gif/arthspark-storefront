@@ -1,1 +1,188 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArthSpark | Websites, Apps, Software & Digital Solutions</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-box">
+        <div class="brand-logo-wrap">
+          <img id="navLogo" src="logo.png" alt="ArthSpark" />
+        </div>
+        <span id="navBrandName" class="brand-title">ArthSpark</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#catalog">Projects</a>
+        <a href="#loan-hub">Loans</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#partners">Partners</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="admin.html" class="btn btn-outline">Admin</a>
+        <button id="headerWaBtn" class="btn btn-whatsapp" type="button">WhatsApp</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">ArthSpark Digital &amp; IT Storefront</div>
+      <h1>Build &amp; Launch With <span>ArthSpark</span></h1>
+      <p>
+        Ready-to-launch websites, custom software, Android &amp; iOS apps, payment gateways, loan portals,
+        and digital marketing solutions—with live working demos and instant order support.
+      </p>
+      <div class="hero-cta">
+        <a href="#catalog" class="btn btn-primary">Explore All Projects</a>
+        <a href="#loan-hub" class="btn btn-outline">View Loan Solutions</a>
+        <button id="heroWaBtn" class="btn btn-whatsapp" type="button">Chat on WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- IT Capabilities -->
+  <section class="container">
+    <div class="it-capabilities">
+      <h2 class="section-heading">What ArthSpark Builds for Businesses</h2>
+      <p class="section-sub">Complete technology stack from storefront UI &amp; booking engines to backend APIs, payments &amp; marketing.</p>
+      <div class="cap-grid">
+        <div class="cap-card">
+          <h4>Commerce &amp; Daily Essentials</h4>
+          <p>E-Commerce, Grocery, Milk Subscription, Sabzi &amp; Fruits, Medicine, Seller &amp; Delivery Partner systems.</p>
+        </div>
+        <div class="cap-card">
+          <h4>Travel, Ride &amp; Hospitality</h4>
+          <p>Hotel Booking, Bus &amp; Flight Booking, Rapido/Ola/Uber style Ride &amp; Cab flow, Tour &amp; Travel portals.</p>
+        </div>
+        <div class="cap-card">
+          <h4>Finance, Loans &amp; Payments</h4>
+          <p>Personal, Business, Mortgage, New/Old Car &amp; Bike Loans, Banking portals &amp; Payment Gateway setups.</p>
+        </div>
+        <div class="cap-card">
+          <h4>Custom Software, School, Real Estate &amp; Ads</h4>
+          <p>ERP/Billing software, School &amp; Real Estate portals, AI automation, SEO, Meta &amp; Google Ads.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Projects Catalog -->
+  <section id="catalog" class="container">
+    <h2 class="section-heading">Projects &amp; Ready Solutions</h2>
+    <p class="section-sub">Click <strong>Demo</strong> to test the live interactive flow or <strong>Buy Now</strong> for plan details, WhatsApp inquiry &amp; Razorpay checkout.</p>
+
+    <div class="filter-section">
+      <div class="search-box">
+        <input id="searchInput" type="text" placeholder="Search e-commerce, grocery, hotel, flight, ride, loan, school..." />
+      </div>
+      <div id="categoryTabs" class="category-tabs"></div>
+    </div>
+
+    <div id="projectsGrid" class="projects-grid"></div>
+  </section>
+
+  <!-- Dedicated Loan Section -->
+  <section id="loan-hub" class="container">
+    <div class="loan-banner">
+      <h2 class="section-heading">ArthSpark Loan Portal &amp; Lead System</h2>
+      <p class="section-sub">Complete loan showcase &amp; application workflow covering all major loan categories:</p>
+      <div class="loan-chips">
+        <span class="loan-chip">Personal Loan</span>
+        <span class="loan-chip">Business Loan</span>
+        <span class="loan-chip">Mortgage Loan</span>
+        <span class="loan-chip">New Car Loan</span>
+        <span class="loan-chip">Old Car Loan</span>
+        <span class="loan-chip">New Bike Loan</span>
+        <span class="loan-chip">Old Bike Loan</span>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:10px;">
+        <a href="demo.html?type=loan&title=ArthSpark%20Loan%20Hub" class="btn btn-primary">Open Loan Demo</a>
+        <button id="loanWaBtn" class="btn btn-whatsapp" type="button">Enquire Loan Setup on WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slow Auto-Scrolling 4 & 5 Star Reviews -->
+  <section id="reviews" class="container reviews-section">
+    <h2 class="section-heading">Client Ratings &amp; Reviews (4★ – 5★)</h2>
+    <p class="section-sub">Verified feedback from business owners using ArthSpark platforms.</p>
+    <div id="reviewsMarquee" class="reviews-marquee"></div>
+  </section>
+
+  <!-- Our Partners -->
+  <section id="partners" class="container partners-section">
+    <h2 class="section-heading">Our Partners</h2>
+    <p class="section-sub">Platforms, gateways &amp; growth partners powering ArthSpark solutions.</p>
+    <div id="partnersGrid" class="partners-grid"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong id="footerBrand" style="color:#fff; font-size:1rem;">ArthSpark</strong>
+        <p>Ranchi, Jharkhand • Email: <span id="footerEmail">supportarthspark@gmail.com</span></p>
+      </div>
+      <div>
+        <p>WhatsApp Support: +<span id="footerWa">917978895193</span> • <a href="admin.html" style="text-decoration:underline;">Admin Panel</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <button id="floatingWaBtn" class="floating-wa" type="button" aria-label="Chat on WhatsApp">WA</button>
+
+  <!-- 2-Minute Viewport Popup -->
+  <div id="timedPopup" class="timed-popup">
+    <button id="closeTimedPopup" class="popup-close-btn" type="button">&times;</button>
+    <div style="font-size:0.75rem; color:#ffb48f; font-weight:700; margin-bottom:4px;">ArthSpark Quick Connect</div>
+    <p id="timedPopupText" style="font-size:0.86rem; color:#f8f7fc; margin-bottom:12px;">
+      Need a custom website, software, or digital solution for your business? Tap to chat on WhatsApp!
+    </p>
+    <button id="timedPopupWaBtn" class="btn btn-whatsapp" style="width:100%;" type="button">Message on WhatsApp</button>
+  </div>
+
+  <!-- Buy Now Modal -->
+  <div id="buyModal" class="modal-backdrop">
+    <div class="modal-box">
+      <button id="closeBuyModal" class="modal-close" type="button">&times;</button>
+      <h3 id="buyProjectTitle" style="font-size:1.2rem; margin-bottom:6px;">Project Title</h3>
+      <p id="buyMaintInfo" style="font-size:0.82rem; color:#8ce99a; margin-bottom:12px;">1 Year Free Support &amp; Maintenance</p>
+
+      <div style="background:#0c0917; border:1px solid var(--border-subtle); border-radius:10px; padding:10px 12px; margin-bottom:14px;">
+        <span style="font-size:0.82rem; color:#9e96b8; text-decoration:line-through; margin-right:8px;" id="buyMrp">₹19,999</span>
+        <strong style="font-size:1.25rem; color:var(--accent-gold);" id="buyPrice">₹6,999</strong>
+      </div>
+
+      <div class="form-group">
+        <label>Your Name</label>
+        <input id="buyerName" type="text" placeholder="Enter your full name" />
+      </div>
+      <div class="form-group">
+        <label>Mobile / WhatsApp Number</label>
+        <input id="buyerPhone" type="tel" placeholder="Enter 10-digit mobile number" />
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px;">
+        <button id="buyWaBtn" class="btn btn-whatsapp" type="button">WhatsApp Message</button>
+        <button id="buyRazorpayBtn" class="btn btn-primary" type="button">Pay Now</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
