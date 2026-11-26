@@ -1,1 +1,179 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArthSpark Admin Control Panel</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    .admin-wrap { max-width: 1100px; margin: 24px auto 60px; padding: 0 16px; }
+    .admin-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 22px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .admin-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-box">
+        <span class="brand-title">ArthSpark Admin</span>
+      </a>
+      <a href="index.html" class="btn btn-outline">View Live Website</a>
+    </div>
+  </header>
+
+  <main class="admin-wrap">
+    <!-- Login Gate -->
+    <div id="loginBox" class="admin-card" style="max-width:420px; margin:40px auto;">
+      <h2 style="margin-bottom:8px;">Admin Login</h2>
+      <p style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">Enter your ArthSpark Admin Password to manage website, logo, prices &amp; orders.</p>
+      <div class="form-group">
+        <input id="adminPassInput" type="password" placeholder="Enter Admin Password" />
+      </div>
+      <button id="adminLoginBtn" class="btn btn-primary" style="width:100%;" type="button">Unlock Admin Panel</button>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" style="display:none;">
+      <!-- 1. Brand, Logo & Payment Settings -->
+      <div class="admin-card">
+        <h2 class="section-heading">1. Brand, Logo, Contact &amp; Razorpay Settings</h2>
+        <p class="section-sub">Update logo (upload image or paste URL), WhatsApp number, email, Razorpay Key &amp; 2-minute popup text.</p>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Company Name (No Pvt Ltd)</label>
+            <input id="setBrand" type="text" value="ArthSpark" />
+          </div>
+          <div class="form-group">
+            <label>Logo URL or Upload New Logo File</label>
+            <input id="setLogoUrl" type="text" placeholder="logo.png or https://..." />
+            <input id="setLogoFile" type="file" accept="image/*" style="margin-top:6px;" />
+          </div>
+          <div class="form-group">
+            <label>WhatsApp Number (with 91)</label>
+            <input id="setWhatsapp" type="text" value="917978895193" />
+          </div>
+          <div class="form-group">
+            <label>Support Email</label>
+            <input id="setEmail" type="email" value="supportarthspark@gmail.com" />
+          </div>
+          <div class="form-group">
+            <label>Razorpay Key ID</label>
+            <input id="setRazorpay" type="text" placeholder="rzp_live_..." />
+          </div>
+          <div class="form-group">
+            <label>Popup Interval (Seconds — 120 = 2 min)</label>
+            <input id="setPopupSec" type="number" value="120" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>2-Minute Popup Message</label>
+          <input id="setPopupMsg" type="text" />
+        </div>
+        <button id="saveSettingsBtn" class="btn btn-primary" type="button">Save Settings</button>
+      </div>
+
+      <!-- 2. Add New Project / Product -->
+      <div class="admin-card">
+        <h2 class="section-heading">2. Add New Project / Software / Service</h2>
+        <p class="section-sub">Photo ke upar MRP (kata hua) aur Offer Price automatic badge mein dikhega.</p>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Project Title</label>
+            <input id="newTitle" type="text" placeholder="e.g., ArthSpark Medicine Delivery" />
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <input id="newCat" type="text" placeholder="e.g., Grocery & Essentials" />
+          </div>
+          <div class="form-group">
+            <label>Demo Page Type</label>
+            <select id="newDemoType">
+              <option value="ecommerce">E-Commerce Store</option>
+              <option value="grocery">Grocery / Medicine Store</option>
+              <option value="milk">Milk Subscription</option>
+              <option value="veg_fruits">Vegetables &amp; Fruits</option>
+              <option value="restaurant">Restaurant Menu</option>
+              <option value="hotel">Hotel Booking</option>
+              <option value="bus">Bus Booking</option>
+              <option value="flight">Flight Booking</option>
+              <option value="ride">Ride / Cab (Rapido/Ola/Uber)</option>
+              <option value="tour">Tour &amp; Travel</option>
+              <option value="loan">Loan Hub (All Categories)</option>
+              <option value="banking">Banking Portal</option>
+              <option value="payment">Payment Gateway</option>
+              <option value="school">School Portal</option>
+              <option value="realestate">Real Estate</option>
+              <option value="partner">Seller Partner</option>
+              <option value="delivery_partner">Delivery Partner</option>
+              <option value="it_marketing">IT Software &amp; Marketing</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Photo URL (or Upload Photo)</label>
+            <input id="newImgUrl" type="text" placeholder="https://..." />
+            <input id="newImgFile" type="file" accept="image/*" style="margin-top:6px;" />
+          </div>
+          <div class="form-group">
+            <label>MRP (Kata Hua Price ₹)</label>
+            <input id="newMrp" type="number" value="19999" />
+          </div>
+          <div class="form-group">
+            <label>Offer Price (Real Amount ₹)</label>
+            <input id="newOffer" type="number" value="6999" />
+          </div>
+          <div class="form-group">
+            <label>Free Maintenance / Validity Text</label>
+            <input id="newMaint" type="text" value="1 Year Free Support & Updates" />
+          </div>
+          <div class="form-group">
+            <label>Key Features (comma separated)</label>
+            <input id="newFeatures" type="text" value="Admin Panel, Razorpay Ready, Fast UI" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Short Description</label>
+          <textarea id="newDesc" rows="2" placeholder="Describe project features..."></textarea>
+        </div>
+        <button id="addProjectBtn" class="btn btn-primary" type="button">+ Add Project to Website</button>
+      </div>
+
+      <!-- 3. Manage Existing Projects (Edit MRP, Offer Price & Photo) -->
+      <div class="admin-card">
+        <h2 class="section-heading">3. Update Existing Projects (MRP, Price &amp; Photo)</h2>
+        <p class="section-sub">Kisi bhi project ka MRP, Offer Price, ya Photo URL badal kar "Update" dabaein—photo badge aur card dono mein turant change ho jayega.</p>
+        <div id="adminProjectsList"></div>
+      </div>
+
+      <!-- 4. Recent Orders & WhatsApp Enquiries -->
+      <div class="admin-card">
+        <h2 class="section-heading">4. Recent Orders &amp; Enquiries</h2>
+        <div id="adminOrdersList"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
