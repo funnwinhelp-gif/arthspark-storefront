@@ -1,1 +1,11 @@
 
+const ARTHSPARK_CONFIG = {
+  SUPABASE_URL: "https://YOUR-PROJECT-ID.supabase.co",
+  SUPABASE_ANON_KEY: "YOUR-SUPABASE-ANON-KEY",
+  BRAND_NAME: "ArthSpark",
+  DEFAULT_LOGO: "logo.png",
+  WHATSAPP_NUMBER: "917978895193",
+  SUPPORT_EMAIL: "supportarthspark@gmail.com",
+  RAZORPAY_KEY: "rzp_live_YOUR_KEY_HERE",
+  ADMIN_PASSWORD: "ArthSpark@2026"
+};
