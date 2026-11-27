@@ -1084,3 +1084,1110 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArthSpark | Ready-to-Launch Digital Assets &amp; Custom IT Solutions</title>
+  <style>
+    :root {
+      --bg-canvas: #0b0e14;
+      --bg-surface: #121722;
+      --bg-card: #151b26;
+      --bg-card-elev: #1b2230;
+      --border-soft: rgba(255, 255, 255, 0.09);
+      --border-gold: rgba(226, 184, 110, 0.42);
+      --text-main: #f3f5f8;
+      --text-muted: #9aa4b5;
+      --gold: #e6be7a;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #0b0e14 !important;
+      background-image:
+        radial-gradient(circle at 75% 14%, rgba(56, 120, 175, 0.16), transparent 42%),
+        radial-gradient(circle at 20% 28%, rgba(230, 190, 122, 0.08), transparent 38%);
+      color: #f3f5f8 !important;
+      line-height: 1.55;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 14, 20, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo-box {
+      background: #f3f5f8;
+      padding: 4px 9px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-logo-box img {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #f3f5f8;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .nav-menu a {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .nav-menu a:hover { color: #ffffff; }
+
+    .top-right-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      transition: 0.2s ease;
+    }
+
+    .btn-demo {
+      background: #2b313c;
+      color: #e8ecf2 !important;
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .btn-demo:hover {
+      background: #363d4b;
+      border-color: var(--border-gold);
+    }
+
+    .btn-shop-emerald {
+      background: linear-gradient(135deg, #0f5c49 0%, #178267 100%);
+      color: #ffffff !important;
+      border-color: rgba(110, 231, 183, 0.25);
+    }
+
+    .btn-shop-indigo {
+      background: linear-gradient(135deg, #32408c 0%, #4859b8 100%);
+      color: #ffffff !important;
+      border-color: rgba(165, 180, 252, 0.25);
+    }
+
+    .btn-shop-gold {
+      background: linear-gradient(135deg, #1b202b 0%, #2c3342 100%);
+      color: var(--gold) !important;
+      border-color: var(--border-gold);
+    }
+
+    .btn-wa {
+      background: #178256;
+      color: #ffffff !important;
+      border-color: rgba(110, 231, 183, 0.25);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 36px 0 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.9rem, 4vw, 2.75rem);
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.4px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 18px;
+      color: var(--text-muted);
+      font-size: 0.96rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .section-head {
+      text-align: center;
+      margin: 26px 0 18px;
+    }
+
+    .section-head h2 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .section-head p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .search-wrap {
+      max-width: 480px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      padding: 11px 15px;
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      color: #f3f5f8;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .search-wrap input:focus {
+      border-color: var(--border-gold);
+    }
+
+    .cat-list {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+
+    @media (min-width: 820px) {
+      .cat-list { justify-content: center; flex-wrap: wrap; }
+    }
+
+    .cat-pill-btn {
+      white-space: nowrap;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .cat-pill-btn.active,
+    .cat-pill-btn:hover {
+      background: #232b3b;
+      color: var(--gold);
+      border-color: var(--border-gold);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-bottom: 42px;
+    }
+
+    @media (max-width: 760px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .nav-menu { display: none; }
+    }
+
+    .work-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(230, 190, 122, 0.22);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-screen-box {
+      position: relative;
+      height: 176px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #1b2332, #0f141e);
+      border: 1px solid var(--border-soft);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .card-screen-box img.card-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.84;
+      transition: transform 0.3s ease;
+    }
+
+    .work-card:hover .card-screen-box img.card-bg-img {
+      transform: scale(1.03);
+    }
+
+    .card-screen-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(11, 14, 20, 0.86) 10%, rgba(11, 14, 20, 0.18) 60%, rgba(11, 14, 20, 0.55) 100%);
+      z-index: 1;
+    }
+
+    .screen-top-bar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .screen-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      background: rgba(11, 14, 20, 0.82);
+      border: 1px solid var(--border-soft);
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+
+    .screen-off-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(11, 14, 20, 0.86);
+      border: 1px solid var(--border-gold);
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+
+    .screen-price-badge {
+      position: relative;
+      z-index: 2;
+      align-self: flex-start;
+      background: rgba(11, 14, 20, 0.92);
+      border: 1px solid var(--border-gold);
+      border-radius: 8px;
+      padding: 4px 10px;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 7px;
+    }
+
+    .mrp-strike {
+      font-size: 0.78rem;
+      color: #8c96a8;
+      text-decoration: line-through;
+    }
+
+    .price-gold {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .work-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .work-desc {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .work-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding-top: 8px;
+      border-top: 1px solid var(--border-soft);
+      margin-bottom: 12px;
+    }
+
+    .work-meta-price {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .work-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .panel-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 34px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .sub-tile {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 14px;
+    }
+
+    .sub-tile h4 {
+      font-size: 0.92rem;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .sub-tile p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .loan-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 16px;
+    }
+
+    .loan-tag {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-soft);
+      color: #e6ebf2;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .reviews-wrap {
+      overflow: hidden;
+      margin-bottom: 34px;
+    }
+
+    .reviews-track {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      animation: slowScroll 42s linear infinite;
+    }
+
+    .reviews-track:hover { animation-play-state: paused; }
+
+    @keyframes slowScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .rev-card {
+      width: 295px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 15px;
+      flex-shrink: 0;
+    }
+
+    .rev-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 6px; }
+    .rev-msg { font-size: 0.83rem; color: #dce2ec; margin-bottom: 10px; }
+    .rev-user { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+    }
+
+    .partner-tile {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      text-align: center;
+    }
+
+    .partner-tile strong { display: block; font-size: 0.92rem; color: #ffffff; margin-bottom: 2px; }
+    .partner-tile span { font-size: 0.76rem; color: var(--text-muted); }
+
+    .wa-float {
+      position: fixed;
+      bottom: 20px;
+      right: 18px;
+      z-index: 950;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #178256;
+      color: #ffffff;
+      border: 1px solid rgba(110, 231, 183, 0.35);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
+    }
+
+    .popup-box {
+      position: fixed;
+      bottom: 82px;
+      right: 18px;
+      left: 18px;
+      max-width: 360px;
+      margin-left: auto;
+      z-index: 960;
+      background: var(--bg-card-elev);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 15px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
+      display: none;
+    }
+
+    .popup-box.show { display: block; }
+
+    .popup-x {
+      position: absolute;
+      top: 8px;
+      right: 11px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 7, 11, 0.84);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 16px;
+    }
+
+    .modal-bg.open { display: flex; }
+
+    .modal-card {
+      width: 100%;
+      max-width: 450px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      position: relative;
+    }
+
+    .modal-x {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .field { margin-bottom: 12px; }
+    .field label { display: block; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 4px; }
+    .field input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 9px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-soft);
+      color: #ffffff;
+      font-size: 0.9rem;
+    }
+
+    .foot {
+      border-top: 1px solid var(--border-soft);
+      padding: 24px 0 76px;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+    }
+
+    .foot-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="index.html" class="brand-wrap">
+        <div class="brand-logo-box">
+          <img id="navLogo" src="logo.png" alt="ArthSpark" onerror="this.parentElement.style.display='none'" />
+        </div>
+        <span id="navBrandName" class="brand-name">ArthSpark</span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#catalog">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#loan-hub">Loans</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#partners">Partners</a>
+      </nav>
+
+      <div class="top-right-info">
+        <span>WhatsApp: +<span id="headerWaText">917978895193</span></span>
+        <a href="admin.html" class="btn btn-demo">Admin</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Shop Our Work</h1>
+      <p>Ready-to-Launch Digital Assets &amp; Custom IT Solutions. Instant Demo, Instant Shop.</p>
+      <div class="hero-actions">
+        <a href="#catalog" class="btn btn-shop-emerald">Browse Projects</a>
+        <a href="#loan-hub" class="btn btn-demo">Loan Portal</a>
+        <button id="heroWaBtn" class="btn btn-wa" type="button">WhatsApp Support</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalog" class="container">
+    <div class="section-head">
+      <h2>Our Premium Projects</h2>
+      <p>Test interactive demos or click Shop Now for instant checkout &amp; WhatsApp support</p>
+    </div>
+
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <input id="searchInput" type="text" placeholder="Search e-commerce, grocery, milk, hotel, bus, flight, ride, loan..." />
+      </div>
+      <div id="categoryTabs" class="cat-list"></div>
+    </div>
+
+    <div id="projectsGrid" class="cards-grid"></div>
+  </section>
+
+  <section id="services" class="container">
+    <div class="panel-box">
+      <h2 style="font-size:1.25rem; color:#ffffff; margin-bottom:4px;">IT &amp; Digital Solutions</h2>
+      <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:14px;">Websites, mobile apps, custom software, payment systems &amp; growth marketing.</p>
+      <div class="grid-4">
+        <div class="sub-tile">
+          <h4>Commerce &amp; Daily</h4>
+          <p>E-Commerce, Grocery, Milk Subscription, Sabzi &amp; Fruits, Seller &amp; Delivery systems.</p>
+        </div>
+        <div class="sub-tile">
+          <h4>Travel &amp; Mobility</h4>
+          <p>Hotel, Bus &amp; Flight booking, Ride/Cab dispatch (Rapido/Ola/Uber flow), Tour packages.</p>
+        </div>
+        <div class="sub-tile">
+          <h4>Loans &amp; FinTech</h4>
+          <p>Personal, Business, Mortgage, New/Old Car &amp; Bike Loans, Banking &amp; Payment Gateway.</p>
+        </div>
+        <div class="sub-tile">
+          <h4>Software &amp; Marketing</h4>
+          <p>Custom CRM/ERP software, School &amp; Real Estate portals, SEO, Meta &amp; Google Ads.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="loan-hub" class="container">
+    <div class="panel-box">
+      <h2 style="font-size:1.25rem; color:#ffffff; margin-bottom:4px;">ArthSpark Loan Hub</h2>
+      <p style="font-size:0.86rem; color:var(--text-muted);">Complete loan category showcase, EMI calculator &amp; instant lead workflow:</p>
+      <div class="loan-tags">
+        <span class="loan-tag">Personal Loan</span>
+        <span class="loan-tag">Business Loan</span>
+        <span class="loan-tag">Mortgage Loan</span>
+        <span class="loan-tag">New Car Loan</span>
+        <span class="loan-tag">Old Car Loan</span>
+        <span class="loan-tag">New Bike Loan</span>
+        <span class="loan-tag">Old Bike Loan</span>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:10px;">
+        <a href="demo.html?type=loan&title=ArthSpark%20Loan%20Hub" class="btn btn-shop-indigo">Live Demo</a>
+        <button id="loanWaBtn" class="btn btn-wa" type="button">Enquire on WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" class="container reviews-wrap">
+    <div class="section-head" style="text-align:left;">
+      <h2>Client Reviews (4★ – 5★)</h2>
+      <p>Feedback from businesses using ArthSpark solutions</p>
+    </div>
+    <div id="reviewsMarquee" class="reviews-track"></div>
+  </section>
+
+  <section id="partners" class="container">
+    <div class="panel-box">
+      <h2 style="font-size:1.25rem; color:#ffffff; margin-bottom:4px;">Our Partners</h2>
+      <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:14px;">Infrastructure, payment &amp; growth partners</p>
+      <div id="partnersGrid" class="partners-grid"></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="container foot-inner">
+      <div>
+        <strong id="footerBrand" style="color:#ffffff;">ArthSpark</strong>
+        <p>Ranchi, Jharkhand • <span id="footerEmail">supportarthspark@gmail.com</span></p>
+      </div>
+      <div>
+        <p>WhatsApp: +<span id="footerWa">917978895193</span> • <a href="admin.html" style="text-decoration:underline;">Admin</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="floatingWaBtn" class="wa-float" type="button">WA</button>
+
+  <div id="timedPopup" class="popup-box">
+    <button id="closeTimedPopup" class="popup-x" type="button">&times;</button>
+    <div style="font-size:0.74rem; color:var(--gold); font-weight:700; margin-bottom:4px;">ArthSpark Support</div>
+    <p id="timedPopupText" style="font-size:0.85rem; color:#f3f5f8; margin-bottom:12px;">
+      Need a custom website, app, or software for your business? Chat with us on WhatsApp.
+    </p>
+    <button id="timedPopupWaBtn" class="btn btn-wa" style="width:100%;" type="button">Chat on WhatsApp</button>
+  </div>
+
+  <div id="buyModal" class="modal-bg">
+    <div class="modal-card">
+      <button id="closeBuyModal" class="modal-x" type="button">&times;</button>
+      <h3 id="buyProjectTitle" style="font-size:1.12rem; color:#ffffff; margin-bottom:4px;">Project</h3>
+      <p id="buyMaintInfo" style="font-size:0.8rem; color:#6ee7b7; margin-bottom:12px;">1 Year Free Support &amp; Maintenance</p>
+
+      <div style="background:#0d1118; border:1px solid var(--border-soft); border-radius:9px; padding:10px 12px; margin-bottom:12px;">
+        <span id="buyMrp" class="mrp-strike" style="margin-right:8px;">₹24,999</span>
+        <strong id="buyPrice" class="price-gold" style="font-size:1.2rem;">₹7,999</strong>
+      </div>
+
+      <div class="field">
+        <label>Your Name</label>
+        <input id="buyerName" type="text" placeholder="Enter your name" />
+      </div>
+      <div class="field">
+        <label>Mobile / WhatsApp Number</label>
+        <input id="buyerPhone" type="tel" placeholder="Enter mobile number" />
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px;">
+        <button id="buyWaBtn" class="btn btn-wa" type="button">WhatsApp Inquiry</button>
+        <button id="buyRazorpayBtn" class="btn btn-shop-emerald" type="button">Shop Now</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script>
+    (function () {
+      const cfg = window.ARTHSPARK_CONFIG || {};
+      let settings = {
+        brand_name: cfg.BRAND_NAME || "ArthSpark",
+        logo_url: cfg.DEFAULT_LOGO || "logo.png",
+        whatsapp: cfg.WHATSAPP_NUMBER || "917978895193",
+        email: cfg.SUPPORT_EMAIL || "supportarthspark@gmail.com",
+        razorpay_key: cfg.RAZORPAY_KEY || "",
+        popup_interval_sec: 120,
+        popup_message: "Need a custom website, app, or software for your business? Chat with us on WhatsApp."
+      };
+
+      const supa =
+        cfg.SUPABASE_URL &&
+        cfg.SUPABASE_ANON_KEY &&
+        !cfg.SUPABASE_URL.includes("YOUR-PROJECT-ID") &&
+        window.supabase
+          ? window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY)
+          : null;
+
+      // Real-world photography per project / service category
+      const CATEGORY_PHOTOS = {
+        ecommerce: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80",
+        grocery: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80",
+        milk: "https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=900&q=80",
+        veg_fruits: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=80",
+        restaurant: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
+        hotel: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80",
+        bus: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=900&q=80",
+        flight: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=80",
+        ride: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=900&q=80",
+        tour: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
+        loan: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80",
+        banking: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=80",
+        payment: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=900&q=80",
+        school: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80",
+        realestate: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80",
+        partner: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=80",
+        delivery_partner: "https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=900&q=80",
+        it_marketing: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80"
+      };
+
+      const PROJECTS = [
+        { id: 1, title: "ArthSpark E-Commerce Platform", category: "E-Commerce", description: "Online store with catalog, cart, Buy Now checkout, order tracking & admin panel.", demo_type: "ecommerce", mrp: 24999, offer_price: 7999, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-emerald" },
+        { id: 2, title: "ArthSpark Instant Grocery Store", category: "Grocery & Daily", description: "Fast grocery ordering with category aisles, basket cart & slot delivery.", demo_type: "grocery", mrp: 21999, offer_price: 6999, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-gold" },
+        { id: 3, title: "ArthSpark Fresh Milk Subscription", category: "Grocery & Daily", description: "Daily morning milk delivery & subscription calendar with billing.", demo_type: "milk", mrp: 19999, offer_price: 5999, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-indigo" },
+        { id: 4, title: "ArthSpark Sabzi & Fresh Fruits Mart", category: "Grocery & Daily", description: "Daily vegetables, fruits & combo packs with fast order checkout.", demo_type: "veg_fruits", mrp: 18999, offer_price: 5499, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-emerald" },
+        { id: 5, title: "ArthSpark Restaurant & Table Menu", category: "Hospitality", description: "Digital menu, table/order system & kitchen order flow.", demo_type: "restaurant", mrp: 22999, offer_price: 7499, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-gold" },
+        { id: 6, title: "ArthSpark Hotel Booking Portal", category: "Hospitality", description: "Room inventory, check-in/out calendar, tariff plans & booking receipt.", demo_type: "hotel", mrp: 25999, offer_price: 8999, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-indigo" },
+        { id: 7, title: "ArthSpark Bus Ticket Booking", category: "Travel & Ride", description: "Route search, interactive seat selection, boarding points & booking flow.", demo_type: "bus", mrp: 27999, offer_price: 9999, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-emerald" },
+        { id: 8, title: "ArthSpark Flight Booking Engine", category: "Travel & Ride", description: "Flight route search, fare comparison, passenger form & booking summary.", demo_type: "flight", mrp: 29999, offer_price: 10999, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-indigo" },
+        { id: 9, title: "ArthSpark Ride & Cab Dispatch", category: "Travel & Ride", description: "Rapido/Ola/Uber style bike, auto & cab ride booking with fare estimate.", demo_type: "ride", mrp: 34999, offer_price: 12999, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-gold" },
+        { id: 10, title: "ArthSpark Tour & Travel Packages", category: "Travel & Ride", description: "Holiday itineraries, group packages & instant trip inquiry routing.", demo_type: "tour", mrp: 21999, offer_price: 6999, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-emerald" },
+        { id: 11, title: "ArthSpark Loan Hub (All Loan Categories)", category: "Loans & FinTech", description: "Personal, Business, Mortgage, New/Old Car & New/Old Bike loan flow.", demo_type: "loan", mrp: 24999, offer_price: 7999, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-indigo" },
+        { id: 12, title: "ArthSpark Banking & FinTech Portal", category: "Loans & FinTech", description: "Account/wallet dashboard, ledger view & customer onboarding UI.", demo_type: "banking", mrp: 29999, offer_price: 10999, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-gold" },
+        { id: 13, title: "ArthSpark Payment Gateway Suite", category: "Loans & FinTech", description: "UPI, QR & card checkout flow with payment status & order records.", demo_type: "payment", mrp: 19999, offer_price: 6499, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-emerald" },
+        { id: 14, title: "ArthSpark School & Campus Portal", category: "Portals & Software", description: "Admissions, noticeboard, student/teacher view & academic schedule.", demo_type: "school", mrp: 19999, offer_price: 5999, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-indigo" },
+        { id: 15, title: "ArthSpark Real Estate & Property Hub", category: "Portals & Software", description: "Property listings, filters, EMI calculator & site visit requests.", demo_type: "realestate", mrp: 22999, offer_price: 7499, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-gold" },
+        { id: 16, title: "ArthSpark Seller Partner Portal", category: "Portals & Software", description: "Vendor onboarding, product listings, commission & payout tracking.", demo_type: "partner", mrp: 18999, offer_price: 5999, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-emerald" },
+        { id: 17, title: "ArthSpark Delivery Partner System", category: "Portals & Software", description: "Rider task queue, pickup/drop steps & partner earning summary.", demo_type: "delivery_partner", mrp: 18999, offer_price: 5999, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-indigo" },
+        { id: 18, title: "ArthSpark Custom Software & Marketing", category: "Portals & Software", description: "Custom web software, CRM/ERP, SEO, Meta & Google Ads suite.", demo_type: "it_marketing", mrp: 24999, offer_price: 8499, free_maintenance: "1 Year Free Support & Maintenance", btnStyle: "btn-shop-gold" }
+      ];
+
+      const REVIEWS = [
+        { client_name: "Rajesh Kumar", business_name: "Ranchi Retail Mart", rating: 5, comment: "Storefront aur checkout flow clean aur fast hai. Customers aasani se demo aur order kar lete hain." },
+        { client_name: "Priya Sharma", business_name: "UrbanStay Hotels", rating: 5, comment: "Booking flow clear aur structured hai. Admin se price aur settings manage karna aasan hai." },
+        { client_name: "Vikram Singh", business_name: "FinBridge Advisory", rating: 5, comment: "Personal, Business, Car aur Bike loan ke options ek jagah organized tarike se milte hain." },
+        { client_name: "Ananya Verma", business_name: "FreshLeaf Organics", rating: 4, comment: "Milk aur daily essentials ka layout neat hai aur WhatsApp inquiry directly details ke saath aati hai." }
+      ];
+
+      const PARTNERS = [
+        { partner_name: "ArthSpark Cloud", role_tag: "Web & App Architecture" },
+        { partner_name: "Razorpay", role_tag: "Payment Gateway" },
+        { partner_name: "Supabase", role_tag: "Database & Storage" },
+        { partner_name: "Vercel & Netlify", role_tag: "Web Hosting" },
+        { partner_name: "WhatsApp Business", role_tag: "Instant Lead Routing" },
+        { partner_name: "Meta & Google Ads", role_tag: "Growth & Performance" }
+      ];
+
+      let allProjects = [...PROJECTS];
+      let selectedCat = "All";
+      let currentBuy = null;
+
+      function fmtINR(n) {
+        return "₹" + Number(n || 0).toLocaleString("en-IN");
+      }
+
+      function waLink(msg) {
+        const clean = String(settings.whatsapp || "917978895193").replace(/\D/g, "");
+        window.open(`https://wa.me/${clean}?text=${encodeURIComponent(msg)}`, "_blank");
+      }
+
+      function getCardPhoto(proj) {
+        if (proj.image_url && proj.image_url.trim().startsWith("http")) {
+          return proj.image_url.trim();
+        }
+        return CATEGORY_PHOTOS[proj.demo_type] || CATEGORY_PHOTOS.ecommerce;
+      }
+
+      function applySettings() {
+        const cleanBrand = (settings.brand_name || "ArthSpark").replace(/pvt\.?\s*ltd\.?/gi, "").trim() || "ArthSpark";
+        document.getElementById("navBrandName").textContent = cleanBrand;
+        document.getElementById("footerBrand").textContent = cleanBrand;
+        document.getElementById("headerWaText").textContent = settings.whatsapp || "917978895193";
+        document.getElementById("footerWa").textContent = settings.whatsapp || "917978895193";
+        document.getElementById("footerEmail").textContent = settings.email || "supportarthspark@gmail.com";
+        document.getElementById("timedPopupText").textContent = settings.popup_message || "Need a custom website, app, or software for your business? Chat with us on WhatsApp.";
+        if (settings.logo_url) {
+          document.getElementById("navLogo").src = settings.logo_url;
+        }
+      }
+
+      function renderTabs() {
+        const el = document.getElementById("categoryTabs");
+        const cats = ["All", ...new Set(allProjects.map((p) => p.category))];
+        el.innerHTML = cats
+          .map((c) => `<button type="button" class="cat-pill-btn ${c === selectedCat ? "active" : ""}" data-c="${c}">${c}</button>`)
+          .join("");
+        el.querySelectorAll(".cat-pill-btn").forEach((b) => {
+          b.addEventListener("click", () => {
+            selectedCat = b.getAttribute("data-c");
+            renderTabs();
+            renderGrid();
+          });
+        });
+      }
+
+      function renderGrid() {
+        const grid = document.getElementById("projectsGrid");
+        const q = (document.getElementById("searchInput").value || "").toLowerCase().trim();
+        const list = allProjects.filter((p) => {
+          const cOk = selectedCat === "All" || p.category === selectedCat;
+          const tOk = !q || p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || p.description.toLowerCase().includes(q);
+          return cOk && tOk;
+        });
+
+        grid.innerHTML = list
+          .map((p) => {
+            const mrp = Number(p.mrp || 0);
+            const offer = Number(p.offer_price || 0);
+            const offPct = mrp > offer && mrp > 0 ? Math.round(((mrp - offer) / mrp) * 100) : 0;
+            const demoUrl = `demo.html?type=${encodeURIComponent(p.demo_type || "ecommerce")}&title=${encodeURIComponent(p.title)}&price=${offer}`;
+            const shopBtnClass = p.btnStyle || "btn-shop-emerald";
+            const photoUrl = getCardPhoto(p);
+
+            return `
+              <article class="work-card">
+                <div>
+                  <div class="card-screen-box">
+                    <img class="card-bg-img" src="${photoUrl}" alt="${p.title}" loading="lazy" />
+                    <div class="card-screen-scrim"></div>
+                    <div class="screen-top-bar">
+                      <span class="screen-tag">${p.category}</span>
+                      ${offPct > 0 ? `<span class="screen-off-tag">${offPct}% OFF</span>` : ""}
+                    </div>
+                    <div class="screen-price-badge">
+                      ${mrp > offer ? `<span class="mrp-strike">${fmtINR(mrp)}</span>` : ""}
+                      <span class="price-gold">${fmtINR(offer)}</span>
+                    </div>
+                  </div>
+
+                  <h3 class="work-title">${p.title}</h3>
+                  <p class="work-desc">${p.description}</p>
+                </div>
+
+                <div>
+                  <div class="work-meta-row">
+                    <span>${p.free_maintenance || "1 Year Free Support"}</span>
+                    <div>
+                      ${mrp > offer ? `<span class="mrp-strike" style="margin-right:5px;">${fmtINR(mrp)}</span>` : ""}
+                      <span class="work-meta-price">${fmtINR(offer)}</span>
+                    </div>
+                  </div>
+                  <div class="work-btns">
+                    <a href="${demoUrl}" class="btn btn-demo">Live Demo</a>
+                    <button type="button" class="btn ${shopBtnClass} open-shop-btn" data-id="${p.id}">Shop Now</button>
+                  </div>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+
+        grid.querySelectorAll(".open-shop-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const proj = allProjects.find((x) => String(x.id) === String(btn.getAttribute("data-id")));
+            if (!proj) return;
+            currentBuy = proj;
+            document.getElementById("buyProjectTitle").textContent = proj.title;
+            document.getElementById("buyMaintInfo").textContent = proj.free_maintenance || "1 Year Free Support & Maintenance";
+            document.getElementById("buyMrp").textContent = fmtINR(proj.mrp);
+            document.getElementById("buyPrice").textContent = fmtINR(proj.offer_price);
+            document.getElementById("buyModal").classList.add("open");
+          });
+        });
+      }
+
+      function renderReviews(list) {
+        const items = (list && list.length ? list : REVIEWS).filter((r) => Number(r.rating) >= 4);
+        const finalList = items.length ? items : REVIEWS;
+        document.getElementById("reviewsMarquee").innerHTML = [...finalList, ...finalList]
+          .map(
+            (r) => `
+            <div class="rev-card">
+              <div class="rev-stars">${"★".repeat(Math.min(5, Math.max(4, Number(r.rating) || 5)))} (${r.rating || 5}/5)</div>
+              <p class="rev-msg">"${r.comment}"</p>
+              <div class="rev-user">${r.client_name} • ${r.business_name}</div>
+            </div>`
+          )
+          .join("");
+      }
+
+      function renderPartners(list) {
+        const items = list && list.length ? list : PARTNERS;
+        document.getElementById("partnersGrid").innerHTML = items
+          .map(
+            (pt) => `
+            <div class="partner-tile">
+              <strong>${pt.partner_name}</strong>
+              <span>${pt.role_tag}</span>
+            </div>`
+          )
+          .join("");
+      }
+
+      async function saveOrder(method, status) {
+        if (!supa || !currentBuy) return;
+        await supa.from("orders").insert({
+          customer_name: (document.getElementById("buyerName").value || "Visitor").trim(),
+          customer_phone: (document.getElementById("buyerPhone").value || "Not Provided").trim(),
+          project_title: currentBuy.title,
+          amount: Number(currentBuy.offer_price || 0),
+          payment_method: method,
+          payment_status: status
+        });
+      }
+
+      async function init() {
+        applySettings();
+        renderTabs();
+        renderGrid();
+        renderReviews(REVIEWS);
+        renderPartners(PARTNERS);
+
+        if (!supa) return;
+        const [sRes, pRes, rRes, ptRes] = await Promise.all([
+          supa.from("site_settings").select("*").eq("id", 1).maybeSingle(),
+          supa.from("projects").select("*").order("sort_order", { ascending: true }),
+          supa.from("reviews").select("*").order("id", { ascending: false }),
+          supa.from("partners").select("*").order("id", { ascending: true })
+        ]);
+        if (sRes.data) {
+          settings = { ...settings, ...sRes.data };
+          applySettings();
+        }
+        if (pRes.data && pRes.data.length) {
+          allProjects = pRes.data.map((item, idx) => ({
+            ...item,
+            image_url: item.image_url || CATEGORY_PHOTOS[item.demo_type] || CATEGORY_PHOTOS.ecommerce,
+            btnStyle: ["btn-shop-emerald", "btn-shop-gold", "btn-shop-indigo"][idx % 3]
+          }));
+          renderTabs();
+          renderGrid();
+        }
+        if (rRes.data && rRes.data.length) renderReviews(rRes.data);
+        if (ptRes.data && ptRes.data.length) renderPartners(ptRes.data);
+      }
+
+      document.getElementById("searchInput").addEventListener("input", renderGrid);
+      document.getElementById("heroWaBtn").addEventListener("click", () => waLink("Hello ArthSpark, I want details about your projects and IT solutions."));
+      document.getElementById("floatingWaBtn").addEventListener("click", () => waLink("Hello ArthSpark, how can you help me?"));
+      document.getElementById("loanWaBtn").addEventListener("click", () => waLink("Hello ArthSpark, I need details about the Loan Hub setup."));
+      document.getElementById("closeBuyModal").addEventListener("click", () => document.getElementById("buyModal").classList.remove("open"));
+
+      document.getElementById("buyWaBtn").addEventListener("click", async () => {
+        if (!currentBuy) return;
+        await saveOrder("WhatsApp Inquiry", "WhatsApp Sent");
+        const name = document.getElementById("buyerName").value.trim();
+        const phone = document.getElementById("buyerPhone").value.trim();
+        waLink(
+          `Hello ArthSpark,\nProject: ${currentBuy.title}\nPrice: ${fmtINR(currentBuy.offer_price)} (MRP: ${fmtINR(currentBuy.mrp)})\n` +
+          (name ? `Name: ${name}\n` : "") +
+          (phone ? `Phone: ${phone}` : "")
+        );
+      });
+
+      document.getElementById("buyRazorpayBtn").addEventListener("click", async () => {
+        if (!currentBuy) return;
+        const key = settings.razorpay_key || cfg.RAZORPAY_KEY;
+        if (!key || key.includes("YOUR_KEY_HERE") || !window.Razorpay) {
+          await saveOrder("WhatsApp Checkout", "Pending");
+          waLink(`Hello ArthSpark, I want to order "${currentBuy.title}" (${fmtINR(currentBuy.offer_price)}).`);
+          return;
+        }
+        const rzp = new window.Razorpay({
+          key,
+          amount: Number(currentBuy.offer_price || 0) * 100,
+          currency: "INR",
+          name: "ArthSpark",
+          description: currentBuy.title,
+          handler: async function () {
+            await saveOrder("Razorpay", "Paid");
+            alert("Payment received! Our team will contact you shortly.");
+          }
+        });
+        rzp.open();
+      });
+
+      const pop = document.getElementById("timedPopup");
+      document.getElementById("closeTimedPopup").addEventListener("click", () => pop.classList.remove("show"));
+      document.getElementById("timedPopupWaBtn").addEventListener("click", () => waLink("Hello ArthSpark, I need assistance with a project."));
+      setInterval(() => pop.classList.add("show"), (Number(settings.popup_interval_sec) || 120) * 1000);
+
+      init();
+    })();
+  </script>
+</body>
+</html>
