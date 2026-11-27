@@ -5822,3 +5822,1490 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArthSpark | IT Services, Websites, Apps &amp; Software in Ranchi, Jharkhand</title>
+  <meta name="description" content="ArthSpark provides website development, mobile apps, custom software, e-commerce, loan portals, and digital marketing in Ranchi, Jharkhand and nearby areas." />
+  <meta name="keywords" content="ArthSpark Ranchi, IT services Ranchi, website development Ranchi, mobile app development Jharkhand, software company near Ranchi, digital marketing Ranchi" />
+  <style>
+    :root {
+      --bg-page: #0a0912;
+      --bg-card: #12101e;
+      --bg-card-2: #171426;
+      --border-soft: rgba(255, 255, 255, 0.09);
+      --border-accent: rgba(255, 110, 56, 0.35);
+      --text-main: #f5f4fa;
+      --text-sub: #a6a1bc;
+      --accent-orange: #ff6a2b;
+      --accent-violet: #8d46ff;
+      --accent-gold: #f3be5b;
+      --grad-btn: linear-gradient(135deg, #ff6a2b 0%, #8d46ff 100%);
+      --radius-lg: 16px;
+      --radius-md: 11px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg-page) !important;
+      color: var(--text-main) !important;
+      line-height: 1.58;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* Sticky Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 120;
+      background: rgba(10, 9, 18, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 0;
+      gap: 10px;
+    }
+
+    .brand-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      flex-shrink: 0;
+    }
+
+    .logo-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .logo-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-label {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: #ffffff;
+      white-space: nowrap;
+      letter-spacing: 0.2px;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .desktop-nav a {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .desktop-nav a:hover { color: #ffffff; }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--bg-card-2);
+      border: 1px solid var(--border-soft);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.05rem;
+    }
+
+    /* Slide-out Menu Drawer */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 3, 9, 0.78);
+      backdrop-filter: blur(4px);
+      z-index: 300;
+      display: none;
+      justify-content: flex-end;
+    }
+
+    .drawer-backdrop.open { display: flex; }
+
+    .drawer-panel {
+      width: 100%;
+      max-width: 360px;
+      height: 100%;
+      background: #0e0c1a;
+      border-left: 1px solid var(--border-accent);
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .drawer-close {
+      background: var(--bg-card-2);
+      border: 1px solid var(--border-soft);
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 14px 0;
+    }
+
+    .drawer-links a {
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .drawer-links a:hover {
+      border-color: var(--border-accent);
+      color: #ffffff;
+    }
+
+    .drawer-seo-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      padding: 13px;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+    }
+
+    .drawer-seo-box strong {
+      display: block;
+      color: #ffffff;
+      font-size: 0.88rem;
+      margin-bottom: 4px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 36px 0 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.85rem, 4.2vw, 2.7rem);
+      font-weight: 700;
+      line-height: 1.18;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 15px;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border-soft);
+      transition: 0.2s ease;
+    }
+
+    .btn-grad {
+      background: var(--grad-btn);
+      color: #ffffff !important;
+      border: none;
+    }
+
+    .btn-dark {
+      background: var(--bg-card-2);
+      color: #f5f4fa !important;
+      border-color: var(--border-soft);
+    }
+
+    .btn-dark:hover {
+      border-color: var(--border-accent);
+    }
+
+    .btn-wa {
+      background: #168055;
+      color: #ffffff !important;
+      border: none;
+    }
+
+    .sec {
+      padding: 24px 0;
+    }
+
+    .sec-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+
+    .sec-desc {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      margin-bottom: 18px;
+    }
+
+    /* Slow Side-Scrolling Showcase: Our Products Development */
+    .dev-marquee-wrap {
+      overflow: hidden;
+      width: 100%;
+      padding: 4px 0 8px;
+    }
+
+    .dev-marquee-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: devSideScroll 48s linear infinite;
+    }
+
+    .dev-marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes devSideScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .dev-slide-card {
+      width: 245px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: 14px;
+      overflow: hidden;
+      flex-shrink: 0;
+      transition: border-color 0.2s ease;
+    }
+
+    .dev-slide-card:hover {
+      border-color: var(--border-accent);
+    }
+
+    .dev-slide-card img {
+      width: 100%;
+      height: 155px;
+      object-fit: cover;
+      display: block;
+      background: #171426;
+    }
+
+    .dev-slide-caption {
+      padding: 11px 13px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-align: center;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .filter-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .search-box input {
+      width: 100%;
+      max-width: 480px;
+      padding: 11px 14px;
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      color: #ffffff;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .search-box input:focus {
+      border-color: var(--border-accent);
+    }
+
+    .chip-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      flex-wrap: nowrap;
+    }
+
+    @media (min-width: 820px) {
+      .chip-row { flex-wrap: wrap; }
+    }
+
+    .cat-btn {
+      white-space: nowrap;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      color: var(--text-sub);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .cat-btn.active,
+    .cat-btn:hover {
+      background: var(--bg-card-2);
+      color: #ffffff;
+      border-color: var(--border-accent);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 760px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .desktop-nav { display: none; }
+    }
+
+    .item-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .item-card:hover {
+      border-color: var(--border-accent);
+    }
+
+    .card-icon-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .icon-sq {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 106, 43, 0.14);
+      border: 1px solid rgba(255, 106, 43, 0.3);
+      color: #ff9466;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .cat-label {
+      font-size: 0.74rem;
+      color: var(--text-sub);
+      background: var(--bg-card-2);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+    }
+
+    .item-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+
+    .item-card p {
+      font-size: 0.84rem;
+      color: var(--text-sub);
+    }
+
+    .price-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-soft);
+      font-size: 0.82rem;
+      color: var(--text-sub);
+    }
+
+    .strike-amt {
+      text-decoration: line-through;
+      color: #7c7794;
+      margin-right: 6px;
+    }
+
+    .gold-amt {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .card-foot-btns {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .explore-link {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #b78aff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 0;
+    }
+
+    .explore-link:hover { color: #ffffff; }
+
+    .seo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+
+    .area-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .area-pill {
+      font-size: 0.78rem;
+      color: #e4e1f0;
+      background: var(--bg-card-2);
+      border: 1px solid var(--border-soft);
+      padding: 5px 11px;
+      border-radius: 999px;
+    }
+
+    .marquee-box {
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      animation: reviewSlide 42s linear infinite;
+    }
+
+    .marquee-track:hover { animation-play-state: paused; }
+
+    @keyframes reviewSlide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .rev-item {
+      width: 290px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 15px;
+      flex-shrink: 0;
+    }
+
+    .rev-stars { color: var(--accent-gold); font-size: 0.88rem; margin-bottom: 6px; }
+    .rev-text { font-size: 0.83rem; color: #e2dfef; margin-bottom: 8px; }
+    .rev-by { font-size: 0.78rem; color: var(--text-sub); font-weight: 600; }
+
+    .partners-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+      gap: 12px;
+    }
+
+    .partner-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      text-align: center;
+    }
+
+    .partner-box strong { display: block; font-size: 0.92rem; color: #ffffff; margin-bottom: 2px; }
+    .partner-box span { font-size: 0.76rem; color: var(--text-sub); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 820px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    .contact-info-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--bg-card-2);
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .info-lbl { font-size: 0.7rem; letter-spacing: 0.6px; color: var(--text-sub); text-transform: uppercase; }
+    .info-val { font-size: 0.9rem; font-weight: 600; color: #ffffff; }
+
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+
+    .f-group { margin-bottom: 12px; }
+    .f-group label { display: block; font-size: 0.8rem; color: var(--text-sub); margin-bottom: 5px; }
+    .f-group input,
+    .f-group select,
+    .f-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: var(--bg-card-2);
+      border: 1px solid var(--border-soft);
+      color: #ffffff;
+      font-size: 0.88rem;
+      outline: none;
+    }
+
+    .f-group input:focus,
+    .f-group select:focus,
+    .f-group textarea:focus {
+      border-color: var(--border-accent);
+    }
+
+    .footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 24px 0 80px;
+      color: var(--text-sub);
+      font-size: 0.83rem;
+    }
+
+    .footer-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .wa-fab {
+      position: fixed;
+      bottom: 20px;
+      right: 18px;
+      z-index: 95;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #168055;
+      color: #ffffff;
+      border: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
+    }
+
+    .popup-card {
+      position: fixed;
+      bottom: 82px;
+      right: 18px;
+      left: 18px;
+      max-width: 350px;
+      margin-left: auto;
+      z-index: 98;
+      background: var(--bg-card-2);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      padding: 15px;
+      display: none;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.7);
+    }
+
+    .popup-card.show { display: block; }
+
+    .popup-x {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      background: none;
+      border: none;
+      color: var(--text-sub);
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 4, 10, 0.82);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 250;
+      padding: 16px;
+    }
+
+    .modal-bg.open { display: flex; }
+
+    .modal-box {
+      width: 100%;
+      max-width: 440px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      position: relative;
+    }
+
+    .modal-x {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      background: none;
+      border: none;
+      color: var(--text-sub);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div id="fiveTapAdmin" class="brand-trigger" title="ArthSpark">
+        <div class="logo-badge">
+          <img id="navLogo" src="logo.png" alt="ArthSpark" onerror="this.parentElement.style.display='none'" />
+        </div>
+        <span id="navBrand" class="brand-label">ArthSpark</span>
+      </div>
+
+      <nav class="desktop-nav">
+        <a href="#products-dev">Our Products Development</a>
+        <a href="#services-overview">Services</a>
+        <a href="#catalog">Solutions</a>
+        <a href="#ranchi-seo">Ranchi SEO</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-right">
+        <button id="headerWaBtn" class="btn btn-wa" type="button">WhatsApp</button>
+        <button id="openMenuDrawer" class="icon-btn" type="button" aria-label="Menu">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Drawer -->
+  <aside id="menuDrawer" class="drawer-backdrop">
+    <div class="drawer-panel">
+      <div>
+        <div class="drawer-head">
+          <strong style="color:#ffffff; font-size:1rem;">ArthSpark Menu</strong>
+          <button id="closeMenuDrawer" class="drawer-close" type="button">&times;</button>
+        </div>
+
+        <div class="drawer-links">
+          <a href="#products-dev" class="drawer-nav-item">Our Products Development</a>
+          <a href="#services-overview" class="drawer-nav-item">IT Services &amp; Solutions</a>
+          <a href="#catalog" class="drawer-nav-item">All Products &amp; Descriptions</a>
+          <a href="#loan-hub" class="drawer-nav-item">Loan Portal &amp; Lead System</a>
+          <a href="#ranchi-seo" class="drawer-nav-item">Nearby Ranchi &amp; Local SEO</a>
+          <a href="#contact" class="drawer-nav-item">Contact &amp; Inquiry</a>
+        </div>
+
+        <div class="drawer-seo-box" style="margin-bottom:12px;">
+          <strong>IT Services We Deliver</strong>
+          Websites, Android &amp; iOS Apps, Custom Software/ERP, E-Commerce, Grocery, Loan Portals, Payment Gateways, SEO, Meta &amp; Google Ads.
+        </div>
+
+        <div class="drawer-seo-box">
+          <strong>Serving Ranchi &amp; Nearby Areas</strong>
+          Ranchi, Jharkhand • Morabadi, Lalpur, Upper Bazar, Harmu, Doranda, Kanke Road &amp; nearby Jharkhand businesses.
+        </div>
+      </div>
+
+      <div>
+        <button id="drawerWaBtn" class="btn btn-wa" style="width:100%;" type="button">Chat on WhatsApp (+91 7978895193)</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Websites, Apps &amp; Software in Ranchi</h1>
+      <p>
+        ArthSpark builds business websites, mobile apps, custom software, commerce platforms, loan portals, and growth marketing for brands in Ranchi, Jharkhand and across India.
+      </p>
+      <div class="hero-btns">
+        <a href="#catalog" class="btn btn-grad">Explore Products</a>
+        <a href="#services-overview" class="btn btn-dark">Our IT Services</a>
+        <button id="heroWaBtn" class="btn btn-wa" type="button">WhatsApp Inquiry</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Side-Scrolling Photo Strip: Our Products Development -->
+  <section id="products-dev" class="sec">
+    <div class="container">
+      <h2 class="sec-title">Our Products Development</h2>
+      <p class="sec-desc">E-Commerce (Fashion, Watch &amp; Shopping), Grocery, Milk, Sabzi &amp; Fruits, Hospitality, Travel, Loans &amp; Software platforms we build.</p>
+    </div>
+    <div class="dev-marquee-wrap">
+      <div id="devMarqueeTrack" class="dev-marquee-track"></div>
+    </div>
+  </section>
+
+  <!-- Core IT Services -->
+  <section id="services-overview" class="sec">
+    <div class="container">
+      <h2 class="sec-title">IT Services We Provide</h2>
+      <p class="sec-desc">End-to-end digital and software engineering tailored for local businesses, startups, and enterprises near Ranchi.</p>
+
+      <div class="cards-grid">
+        <div class="item-card">
+          <div>
+            <div class="card-icon-row">
+              <span class="icon-sq">WEB</span>
+              <span class="cat-label">IT Service</span>
+            </div>
+            <h3>Website Development</h3>
+            <p>Fast, mobile-friendly business websites, landing pages, and web portals built for speed, lead capture, and local search visibility.</p>
+          </div>
+          <div class="card-foot-btns">
+            <a href="#catalog" class="explore-link">View Web Products &rsaquo;</a>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <div>
+            <div class="card-icon-row">
+              <span class="icon-sq">APP</span>
+              <span class="cat-label">IT Service</span>
+            </div>
+            <h3>Mobile App &amp; Commerce</h3>
+            <p>Storefront, grocery, milk, food/table menu, travel/ride booking, and partner workflows designed for smooth customer ordering.</p>
+          </div>
+          <div class="card-foot-btns">
+            <a href="#catalog" class="explore-link">View App &amp; Store Solutions &rsaquo;</a>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <div>
+            <div class="card-icon-row">
+              <span class="icon-sq">FIN</span>
+              <span class="cat-label">IT Service</span>
+            </div>
+            <h3>Loan &amp; FinTech Portals</h3>
+            <p>Structured lead capture, EMI calculation, and payment gateway integration for personal, business, mortgage, car, and bike loan setups.</p>
+          </div>
+          <div class="card-foot-btns">
+            <a href="#loan-hub" class="explore-link">Open Loan Hub &rsaquo;</a>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <div>
+            <div class="card-icon-row">
+              <span class="icon-sq">SEO</span>
+              <span class="cat-label">IT Service</span>
+            </div>
+            <h3>Software, SEO &amp; Ads</h3>
+            <p>Custom business software, school/real estate portals, local Ranchi SEO, and Meta/Google ad campaigns focused on real inquiries.</p>
+          </div>
+          <div class="card-foot-btns">
+            <a href="#ranchi-seo" class="explore-link">Ranchi Local SEO Details &rsaquo;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Catalog -->
+  <section id="catalog" class="sec">
+    <div class="container">
+      <h2 class="sec-title">Products &amp; Ready Solutions</h2>
+      <p class="sec-desc">Each product includes a clear description of what it does—tap Live Demo to connect on WhatsApp or Shop Now to order.</p>
+
+      <div class="filter-wrap">
+        <div class="search-box">
+          <input id="searchInput" type="text" placeholder="Search e-commerce, grocery, milk, hotel, bus, flight, ride, loan..." />
+        </div>
+        <div id="categoryTabs" class="chip-row"></div>
+      </div>
+
+      <div id="projectsGrid" class="cards-grid"></div>
+    </div>
+  </section>
+
+  <!-- Dedicated Loan Section -->
+  <section id="loan-hub" class="sec">
+    <div class="container">
+      <div class="seo-card">
+        <h2 class="sec-title">Loan Portal &amp; Lead System</h2>
+        <p class="sec-desc">Dedicated loan showcase and inquiry workflow covering all major loan categories:</p>
+        <div class="area-pills">
+          <span class="area-pill">Personal Loan</span>
+          <span class="area-pill">Business Loan</span>
+          <span class="area-pill">Mortgage Loan</span>
+          <span class="area-pill">New Car Loan</span>
+          <span class="area-pill">Old Car Loan</span>
+          <span class="area-pill">New Bike Loan</span>
+          <span class="area-pill">Old Bike Loan</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;">
+          <a href="demo.html?type=loan&title=ArthSpark%20Loan%20Hub" class="btn btn-grad">Live Demo</a>
+          <button id="loanWaBtn" class="btn btn-wa" type="button">Enquire Loan Setup on WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby Ranchi Local SEO Section -->
+  <section id="ranchi-seo" class="sec">
+    <div class="container">
+      <div class="seo-card">
+        <h2 class="sec-title">IT Services in Ranchi &amp; Nearby Jharkhand</h2>
+        <p class="sec-desc">
+          ArthSpark is based in <strong>Ranchi, Jharkhand</strong> and helps local shops, traders, clinics, schools, builders, travel operators, and service providers build an online presence and generate local leads across Ranchi and nearby districts.
+        </p>
+        <div class="area-pills">
+          <span class="area-pill">Ranchi</span>
+          <span class="area-pill">Morabadi</span>
+          <span class="area-pill">Lalpur</span>
+          <span class="area-pill">Upper Bazar</span>
+          <span class="area-pill">Harmu</span>
+          <span class="area-pill">Doranda</span>
+          <span class="area-pill">Kanke Road</span>
+          <span class="area-pill">Nearby Jharkhand</span>
+        </div>
+        <p style="font-size:0.82rem; color:var(--text-sub); margin-top:8px;">
+          Local search coverage: Website development near Ranchi, e-commerce &amp; grocery store setup in Ranchi, loan &amp; billing portals, and digital growth support.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Reviews -->
+  <section id="reviews" class="sec">
+    <div class="container">
+      <h2 class="sec-title">Client Reviews (4★ – 5★)</h2>
+      <p class="sec-desc">Feedback from business owners using ArthSpark solutions.</p>
+      <div class="marquee-box">
+        <div id="reviewsMarquee" class="marquee-track"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section id="partners" class="sec">
+    <div class="container">
+      <h2 class="sec-title">Our Partners</h2>
+      <p class="sec-desc">Platforms, payment gateways &amp; growth tools powering ArthSpark solutions.</p>
+      <div id="partnersGrid" class="partners-row"></div>
+    </div>
+  </section>
+
+  <!-- Contact & Inquiry Section -->
+  <section id="contact" class="sec">
+    <div class="container">
+      <h2 class="sec-title">Ready to Start Your Project?</h2>
+      <p class="sec-desc">Send your requirement or reach out directly—our team responds quickly.</p>
+
+      <div class="contact-grid">
+        <div class="contact-info-box">
+          <h3 style="font-size:1.05rem; color:#ffffff;">Contact Information</h3>
+          <p style="font-size:0.84rem; color:var(--text-sub);">Connect directly with ArthSpark for websites, apps, software, and local Ranchi IT solutions.</p>
+
+          <div class="info-row">
+            <div>
+              <div class="info-lbl">Send Email</div>
+              <div class="info-val">supportarthspark@gmail.com</div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div>
+              <div class="info-lbl">Call / WhatsApp Support</div>
+              <div class="info-val">+91 7978895193</div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div>
+              <div class="info-lbl">Location</div>
+              <div class="info-val">Ranchi, Jharkhand, India</div>
+            </div>
+          </div>
+        </div>
+
+        <form id="contactInquiryForm" class="form-card">
+          <div class="f-group">
+            <label>Your Name</label>
+            <input id="inqName" type="text" placeholder="Enter your name" required />
+          </div>
+          <div class="f-group">
+            <label>Phone / WhatsApp Number</label>
+            <input id="inqPhone" type="tel" placeholder="Enter mobile number" required />
+          </div>
+          <div class="f-group">
+            <label>Service / Product of Interest</label>
+            <select id="inqService">
+              <option value="Website & App Development">Website &amp; App Development</option>
+              <option value="E-Commerce / Grocery / Delivery">E-Commerce / Grocery / Delivery</option>
+              <option value="Loan Hub / FinTech Portal">Loan Hub / FinTech Portal</option>
+              <option value="Custom Software / Ranchi SEO & Ads">Custom Software / Ranchi SEO &amp; Ads</option>
+            </select>
+          </div>
+          <div class="f-group">
+            <label>Message Details</label>
+            <textarea id="inqMsg" rows="3" placeholder="Tell us about your business or project in Ranchi / nearby..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-grad" style="width:100%;">Send on WhatsApp &rarr;</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-flex">
+      <div>
+        <strong id="footerBrand" style="color:#ffffff;">ArthSpark</strong>
+        <p>Ranchi, Jharkhand, India • <span id="footerEmail">supportarthspark@gmail.com</span></p>
+      </div>
+      <div>
+        <p>WhatsApp: +<span id="footerWa">917978895193</span> • &copy; 2026 ArthSpark. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="floatingWaBtn" class="wa-fab" type="button">WA</button>
+
+  <div id="timedPopup" class="popup-card">
+    <button id="closeTimedPopup" class="popup-x" type="button">&times;</button>
+    <div style="font-size:0.72rem; color:var(--accent-gold); font-weight:700; margin-bottom:4px;">ArthSpark Support</div>
+    <p id="timedPopupText" style="font-size:0.84rem; color:#f5f4fa; margin-bottom:10px;">
+      Need a website, app, or software in Ranchi? Chat on WhatsApp.
+    </p>
+    <button id="timedPopupWaBtn" class="btn btn-wa" style="width:100%;" type="button">Chat on WhatsApp</button>
+  </div>
+
+  <!-- Buy Now Modal -->
+  <div id="buyModal" class="modal-bg">
+    <div class="modal-box">
+      <button id="closeBuyModal" class="modal-x" type="button">&times;</button>
+      <h3 id="buyProjectTitle" style="font-size:1.1rem; color:#ffffff; margin-bottom:4px;">Project</h3>
+      <p id="buyMaintInfo" style="font-size:0.8rem; color:#6ee7b7; margin-bottom:12px;">1 Year Free Support &amp; Maintenance</p>
+
+      <div style="background:var(--bg-card-2); border:1px solid var(--border-soft); border-radius:10px; padding:10px 12px; margin-bottom:12px;">
+        <span id="buyMrp" class="strike-amt">₹24,999</span>
+        <strong id="buyPrice" class="gold-amt" style="font-size:1.15rem;">₹7,999</strong>
+      </div>
+
+      <div class="f-group">
+        <label>Your Name</label>
+        <input id="buyerName" type="text" placeholder="Enter your name" />
+      </div>
+      <div class="f-group">
+        <label>Mobile / WhatsApp Number</label>
+        <input id="buyerPhone" type="tel" placeholder="Enter mobile number" />
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px;">
+        <button id="buyWaBtn" class="btn btn-wa" type="button">WhatsApp Inquiry</button>
+        <button id="buyRazorpayBtn" class="btn btn-grad" type="button">Shop Now</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script>
+    (function () {
+      const cfg = window.ARTHSPARK_CONFIG || {};
+      let settings = {
+        brand_name: cfg.BRAND_NAME || "ArthSpark",
+        logo_url: cfg.DEFAULT_LOGO || "logo.png",
+        whatsapp: cfg.WHATSAPP_NUMBER || "917978895193",
+        email: cfg.SUPPORT_EMAIL || "supportarthspark@gmail.com",
+        razorpay_key: cfg.RAZORPAY_KEY || "",
+        popup_interval_sec: 120,
+        popup_message: "Need a website, app, or software in Ranchi? Chat on WhatsApp."
+      };
+
+      const supa =
+        cfg.SUPABASE_URL &&
+        cfg.SUPABASE_ANON_KEY &&
+        !cfg.SUPABASE_URL.includes("YOUR-PROJECT-ID") &&
+        window.supabase
+          ? window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY)
+          : null;
+
+      // Side-scrolling showcase items: Clean photo on top (no text on photo), label below
+      const DEV_SHOWCASE = [
+        {
+          label: "E-Commerce (Fashion, Watch & Shopping)",
+          photo: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          label: "Watches & Lifestyle Store",
+          photo: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          label: "Grocery & Daily Essentials",
+          photo: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          label: "Fresh Milk & Dairy",
+          photo: "https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          label: "Sabzi & Fresh Fruits",
+          photo: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          label: "Restaurant & Table Menu",
+          photo: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          label: "Hotel & Room Booking",
+          photo: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          label: "Bus & Flight Booking",
+          photo: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          label: "Ride & Cab Dispatch",
+          photo: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          label: "Loan & FinTech Portal",
+          photo: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          label: "Real Estate & Property",
+          photo: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          label: "Custom Software & Web Apps",
+          photo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80"
+        }
+      ];
+
+      function renderDevShowcase() {
+        const track = document.getElementById("devMarqueeTrack");
+        if (!track) return;
+        track.innerHTML = [...DEV_SHOWCASE, ...DEV_SHOWCASE]
+          .map(
+            (item) => `
+            <div class="dev-slide-card">
+              <img src="${item.photo}" alt="${item.label}" loading="lazy" />
+              <div class="dev-slide-caption">${item.label}</div>
+            </div>`
+          )
+          .join("");
+      }
+
+      const PROJECTS = [
+        { id: 1, code: "EC", title: "ArthSpark E-Commerce Platform", category: "E-Commerce", description: "Online store for fashion, watches, gadgets & shopping with product catalog, cart, checkout, and admin panel.", demo_type: "ecommerce", mrp: 24999, offer_price: 7999, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 2, code: "GR", title: "ArthSpark Instant Grocery Store", category: "Grocery & Daily", description: "Quick grocery shopping platform with category aisles, basket cart, and slot-based delivery flow.", demo_type: "grocery", mrp: 21999, offer_price: 6999, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 3, code: "MK", title: "ArthSpark Fresh Milk Subscription", category: "Grocery & Daily", description: "Daily morning milk delivery and recurring subscription schedule with transparent billing.", demo_type: "milk", mrp: 19999, offer_price: 5999, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 4, code: "VF", title: "ArthSpark Sabzi & Fresh Fruits Mart", category: "Grocery & Daily", description: "Daily vegetable, fruit, and family combo ordering with fast checkout and order alerts.", demo_type: "veg_fruits", mrp: 18999, offer_price: 5499, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 5, code: "RS", title: "ArthSpark Restaurant & Table Menu", category: "Hospitality", description: "Digital menu, table/order workflow, and kitchen order summary for restaurants and cafes.", demo_type: "restaurant", mrp: 22999, offer_price: 7499, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 6, code: "HT", title: "ArthSpark Hotel Booking Portal", category: "Hospitality", description: "Room listings, check-in/check-out dates, tariff plans, and instant booking inquiry flow.", demo_type: "hotel", mrp: 25999, offer_price: 8999, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 7, code: "BS", title: "ArthSpark Bus Ticket Booking", category: "Travel & Ride", description: "Route search, seat selection, boarding point details, and ticket booking workflow.", demo_type: "bus", mrp: 27999, offer_price: 9999, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 8, code: "FL", title: "ArthSpark Flight Booking Engine", category: "Travel & Ride", description: "Origin-destination flight search, fare comparison, passenger details, and booking flow.", demo_type: "flight", mrp: 29999, offer_price: 10999, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 9, code: "RD", title: "ArthSpark Ride & Cab Dispatch", category: "Travel & Ride", description: "Bike, auto, and cab ride booking experience with fare estimate and pickup/drop flow.", demo_type: "ride", mrp: 34999, offer_price: 12999, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 10, code: "TR", title: "ArthSpark Tour & Travel Packages", category: "Travel & Ride", description: "Holiday tour packages, group trip itineraries, and direct WhatsApp booking inquiries.", demo_type: "tour", mrp: 21999, offer_price: 6999, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 11, code: "LN", title: "ArthSpark Loan Hub (All Loan Categories)", category: "Loans & FinTech", description: "Lead portal covering Personal, Business, Mortgage, New/Old Car, and New/Old Bike loans.", demo_type: "loan", mrp: 24999, offer_price: 7999, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 12, code: "BK", title: "ArthSpark Banking & FinTech Portal", category: "Loans & FinTech", description: "Client/wallet dashboard, transaction ledger view, and structured onboarding interface.", demo_type: "banking", mrp: 29999, offer_price: 10999, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 13, code: "PG", title: "ArthSpark Payment Gateway Suite", category: "Loans & FinTech", description: "UPI, QR, and online payment checkout flow with order tracking and payment status.", demo_type: "payment", mrp: 19999, offer_price: 6499, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 14, code: "SC", title: "ArthSpark School & Campus Portal", category: "Portals & Software", description: "Admission inquiries, noticeboard, academic updates, and student/parent portal layout.", demo_type: "school", mrp: 19999, offer_price: 5999, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 15, code: "RE", title: "ArthSpark Real Estate & Property Hub", category: "Portals & Software", description: "Property showcase, filters, EMI estimate, and site visit lead capture for builders/agents.", demo_type: "realestate", mrp: 22999, offer_price: 7499, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 16, code: "SP", title: "ArthSpark Seller Partner Portal", category: "Portals & Software", description: "Vendor onboarding, catalog management, commission tracking, and partner dashboard.", demo_type: "partner", mrp: 18999, offer_price: 5999, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 17, code: "DP", title: "ArthSpark Delivery Partner System", category: "Portals & Software", description: "Delivery task list, pickup/drop steps, and rider payout summary workflow.", demo_type: "delivery_partner", mrp: 18999, offer_price: 5999, free_maintenance: "1 Year Free Support & Maintenance" },
+        { id: 18, code: "SW", title: "ArthSpark Custom Software & Marketing", category: "Portals & Software", description: "Custom business software, CRM/ERP tools, local Ranchi SEO, and Meta/Google ad support.", demo_type: "it_marketing", mrp: 24999, offer_price: 8499, free_maintenance: "1 Year Free Support & Maintenance" }
+      ];
+
+      const REVIEWS = [
+        { client_name: "Rajesh Kumar", business_name: "Ranchi Retail Mart", rating: 5, comment: "Storefront aur inquiry flow clean aur fast hai. Local customers ko product samajhne aur connect karne mein aasani hoti hai." },
+        { client_name: "Priya Sharma", business_name: "UrbanStay Hotels", rating: 5, comment: "Service presentation clear aur structured hai. Admin se details aur pricing manage karna aasan hai." },
+        { client_name: "Vikram Singh", business_name: "FinBridge Advisory", rating: 5, comment: "Personal, Business, Car aur Bike loan ke options ek jagah organized tarike se milte hain." },
+        { client_name: "Ananya Verma", business_name: "FreshLeaf Organics", rating: 4, comment: "Milk aur daily essentials ka layout clean hai aur WhatsApp inquiry directly details ke saath aati hai." }
+      ];
+
+      const PARTNERS = [
+        { partner_name: "ArthSpark Cloud", role_tag: "Web & App Architecture" },
+        { partner_name: "Razorpay", role_tag: "Payment Gateway" },
+        { partner_name: "Supabase", role_tag: "Database & Storage" },
+        { partner_name: "Vercel & Netlify", role_tag: "Web Hosting" },
+        { partner_name: "WhatsApp Business", role_tag: "Instant Lead Routing" },
+        { partner_name: "Meta & Google Ads", role_tag: "Local SEO & Growth" }
+      ];
+
+      let allProjects = [...PROJECTS];
+      let selectedCat = "All";
+      let currentBuy = null;
+
+      function fmtINR(n) {
+        return "₹" + Number(n || 0).toLocaleString("en-IN");
+      }
+
+      function waLink(msg) {
+        const clean = String(settings.whatsapp || "917978895193").replace(/\D/g, "");
+        window.open(`https://wa.me/${clean}?text=${encodeURIComponent(msg)}`, "_blank");
+      }
+
+      function applySettings() {
+        const cleanBrand = (settings.brand_name || "ArthSpark").replace(/pvt\.?\s*ltd\.?/gi, "").trim() || "ArthSpark";
+        document.getElementById("navBrand").textContent = cleanBrand;
+        document.getElementById("footerBrand").textContent = cleanBrand;
+        document.getElementById("footerWa").textContent = settings.whatsapp || "917978895193";
+        document.getElementById("footerEmail").textContent = settings.email || "supportarthspark@gmail.com";
+        document.getElementById("timedPopupText").textContent = settings.popup_message || "Need a website, app, or software in Ranchi? Chat on WhatsApp.";
+        if (settings.logo_url) {
+          document.getElementById("navLogo").src = settings.logo_url;
+        }
+      }
+
+      // 5 taps on ArthSpark opens admin.html
+      let tapCount = 0;
+      let tapTimer = null;
+      document.getElementById("fiveTapAdmin").addEventListener("click", () => {
+        tapCount += 1;
+        clearTimeout(tapTimer);
+        if (tapCount >= 5) {
+          tapCount = 0;
+          window.location.href = "admin.html";
+          return;
+        }
+        tapTimer = setTimeout(() => {
+          tapCount = 0;
+        }, 1600);
+      });
+
+      // Drawer controls
+      const drawer = document.getElementById("menuDrawer");
+      document.getElementById("openMenuDrawer").addEventListener("click", () => drawer.classList.add("open"));
+      document.getElementById("closeMenuDrawer").addEventListener("click", () => drawer.classList.remove("open"));
+      drawer.addEventListener("click", (e) => {
+        if (e.target === drawer) drawer.classList.remove("open");
+      });
+      drawer.querySelectorAll(".drawer-nav-item").forEach((link) => {
+        link.addEventListener("click", () => drawer.classList.remove("open"));
+      });
+
+      function renderTabs() {
+        const el = document.getElementById("categoryTabs");
+        const cats = ["All", ...new Set(allProjects.map((p) => p.category))];
+        el.innerHTML = cats
+          .map((c) => `<button type="button" class="cat-btn ${c === selectedCat ? "active" : ""}" data-c="${c}">${c}</button>`)
+          .join("");
+        el.querySelectorAll(".cat-btn").forEach((b) => {
+          b.addEventListener("click", () => {
+            selectedCat = b.getAttribute("data-c");
+            renderTabs();
+            renderGrid();
+          });
+        });
+      }
+
+      function renderGrid() {
+        const grid = document.getElementById("projectsGrid");
+        const q = (document.getElementById("searchInput").value || "").toLowerCase().trim();
+        const list = allProjects.filter((p) => {
+          const cOk = selectedCat === "All" || p.category === selectedCat;
+          const tOk = !q || p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || p.description.toLowerCase().includes(q);
+          return cOk && tOk;
+        });
+
+        grid.innerHTML = list
+          .map((p) => {
+            const mrp = Number(p.mrp || 0);
+            const offer = Number(p.offer_price || 0);
+            const demoUrl = `demo.html?type=${encodeURIComponent(p.demo_type || "ecommerce")}&title=${encodeURIComponent(p.title)}&price=${offer}`;
+            const badgeCode = p.code || p.title.slice(0, 2).toUpperCase();
+
+            return `
+              <article class="item-card">
+                <div>
+                  <div class="card-icon-row">
+                    <span class="icon-sq">${badgeCode}</span>
+                    <span class="cat-label">${p.category}</span>
+                  </div>
+                  <h3>${p.title}</h3>
+                  <p>${p.description}</p>
+                </div>
+
+                <div>
+                  <div class="price-strip">
+                    <span>${p.free_maintenance || "1 Year Free Support"}</span>
+                    <div>
+                      ${mrp > offer ? `<span class="strike-amt">${fmtINR(mrp)}</span>` : ""}
+                      <span class="gold-amt">${fmtINR(offer)}</span>
+                    </div>
+                  </div>
+                  <div class="card-foot-btns" style="margin-top:12px;">
+                    <a href="${demoUrl}" class="explore-link">Live Demo &rsaquo;</a>
+                    <button type="button" class="btn btn-dark open-shop-btn" data-id="${p.id}">Shop Now</button>
+                  </div>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+
+        grid.querySelectorAll(".open-shop-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const proj = allProjects.find((x) => String(x.id) === String(btn.getAttribute("data-id")));
+            if (!proj) return;
+            currentBuy = proj;
+            document.getElementById("buyProjectTitle").textContent = proj.title;
+            document.getElementById("buyMaintInfo").textContent = proj.free_maintenance || "1 Year Free Support & Maintenance";
+            document.getElementById("buyMrp").textContent = fmtINR(proj.mrp);
+            document.getElementById("buyPrice").textContent = fmtINR(proj.offer_price);
+            document.getElementById("buyModal").classList.add("open");
+          });
+        });
+      }
+
+      function renderReviews(list) {
+        const items = (list && list.length ? list : REVIEWS).filter((r) => Number(r.rating) >= 4);
+        const finalList = items.length ? items : REVIEWS;
+        document.getElementById("reviewsMarquee").innerHTML = [...finalList, ...finalList]
+          .map(
+            (r) => `
+            <div class="rev-item">
+              <div class="rev-stars">${"★".repeat(Math.min(5, Math.max(4, Number(r.rating) || 5)))} (${r.rating || 5}/5)</div>
+              <p class="rev-text">"${r.comment}"</p>
+              <div class="rev-by">${r.client_name} • ${r.business_name}</div>
+            </div>`
+          )
+          .join("");
+      }
+
+      function renderPartners(list) {
+        const items = list && list.length ? list : PARTNERS;
+        document.getElementById("partnersGrid").innerHTML = items
+          .map(
+            (pt) => `
+            <div class="partner-box">
+              <strong>${pt.partner_name}</strong>
+              <span>${pt.role_tag}</span>
+            </div>`
+          )
+          .join("");
+      }
+
+      async function saveOrder(method, status) {
+        if (!supa || !currentBuy) return;
+        await supa.from("orders").insert({
+          customer_name: (document.getElementById("buyerName").value || "Visitor").trim(),
+          customer_phone: (document.getElementById("buyerPhone").value || "Not Provided").trim(),
+          project_title: currentBuy.title,
+          amount: Number(currentBuy.offer_price || 0),
+          payment_method: method,
+          payment_status: status
+        });
+      }
+
+      async function init() {
+        applySettings();
+        renderDevShowcase();
+        renderTabs();
+        renderGrid();
+        renderReviews(REVIEWS);
+        renderPartners(PARTNERS);
+
+        if (!supa) return;
+        const [sRes, pRes, rRes, ptRes] = await Promise.all([
+          supa.from("site_settings").select("*").eq("id", 1).maybeSingle(),
+          supa.from("projects").select("*").order("sort_order", { ascending: true }),
+          supa.from("reviews").select("*").order("id", { ascending: false }),
+          supa.from("partners").select("*").order("id", { ascending: true })
+        ]);
+        if (sRes.data) {
+          settings = { ...settings, ...sRes.data };
+          applySettings();
+        }
+        if (pRes.data && pRes.data.length) {
+          allProjects = pRes.data;
+          renderTabs();
+          renderGrid();
+        }
+        if (rRes.data && rRes.data.length) renderReviews(rRes.data);
+        if (ptRes.data && ptRes.data.length) renderPartners(ptRes.data);
+      }
+
+      document.getElementById("searchInput").addEventListener("input", renderGrid);
+      document.getElementById("headerWaBtn").addEventListener("click", () => waLink("Hello ArthSpark, I want details about your IT services and products in Ranchi."));
+      document.getElementById("drawerWaBtn").addEventListener("click", () => waLink("Hello ArthSpark, I want details about your IT services and products in Ranchi."));
+      document.getElementById("heroWaBtn").addEventListener("click", () => waLink("Hello ArthSpark, I want details about your projects and IT solutions."));
+      document.getElementById("floatingWaBtn").addEventListener("click", () => waLink("Hello ArthSpark, how can you help me?"));
+      document.getElementById("loanWaBtn").addEventListener("click", () => waLink("Hello ArthSpark, I need details about the Loan Hub setup."));
+      document.getElementById("closeBuyModal").addEventListener("click", () => document.getElementById("buyModal").classList.remove("open"));
+
+      document.getElementById("contactInquiryForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nm = document.getElementById("inqName").value.trim();
+        const ph = document.getElementById("inqPhone").value.trim();
+        const srv = document.getElementById("inqService").value;
+        const msg = document.getElementById("inqMsg").value.trim();
+        waLink(
+          `Hello ArthSpark (Ranchi),\nName: ${nm}\nPhone: ${ph}\nService: ${srv}\n` +
+          (msg ? `Details: ${msg}` : "")
+        );
+      });
+
+      document.getElementById("buyWaBtn").addEventListener("click", async () => {
+        if (!currentBuy) return;
+        await saveOrder("WhatsApp Inquiry", "WhatsApp Sent");
+        const name = document.getElementById("buyerName").value.trim();
+        const phone = document.getElementById("buyerPhone").value.trim();
+        waLink(
+          `Hello ArthSpark,\nProject: ${currentBuy.title}\nPrice: ${fmtINR(currentBuy.offer_price)} (MRP: ${fmtINR(currentBuy.mrp)})\n` +
+          (name ? `Name: ${name}\n` : "") +
+          (phone ? `Phone: ${phone}` : "")
+        );
+      });
+
+      document.getElementById("buyRazorpayBtn").addEventListener("click", async () => {
+        if (!currentBuy) return;
+        const key = settings.razorpay_key || cfg.RAZORPAY_KEY;
+        if (!key || key.includes("YOUR_KEY_HERE") || !window.Razorpay) {
+          await saveOrder("WhatsApp Checkout", "Pending");
+          waLink(`Hello ArthSpark, I want to order "${currentBuy.title}" (${fmtINR(currentBuy.offer_price)}).`);
+          return;
+        }
+        const rzp = new window.Razorpay({
+          key,
+          amount: Number(currentBuy.offer_price || 0) * 100,
+          currency: "INR",
+          name: "ArthSpark",
+          description: currentBuy.title,
+          handler: async function () {
+            await saveOrder("Razorpay", "Paid");
+            alert("Payment received! Our team will contact you shortly.");
+          }
+        });
+        rzp.open();
+      });
+
+      const pop = document.getElementById("timedPopup");
+      document.getElementById("closeTimedPopup").addEventListener("click", () => pop.classList.remove("show"));
+      document.getElementById("timedPopupWaBtn").addEventListener("click", () => waLink("Hello ArthSpark, I need assistance with a project in Ranchi."));
+      setInterval(() => pop.classList.add("show"), (Number(settings.popup_interval_sec) || 120) * 1000);
+
+      init();
+    })();
+  </script>
+</body>
+</html>
